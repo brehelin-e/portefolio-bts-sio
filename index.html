@@ -8,66 +8,102 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Background (fixe, pleine largeur/hauteur, sans JS) -->
-  <div class="bg"></div>
+  <!-- Fond fluide plein écran -->
+  <div class="bg" aria-hidden="true"></div>
+
+  <!-- Toggle du menu (hack CSS, pas de JS) -->
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
 
   <header class="site-header">
     <div class="wrap nav">
-      <a class="brand" href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHBR7RTIkiM3QAAAZoMC0bo3twN-2MJ5kPlF2PrqUYC-mSToTTqY22o-KTwTbTJ_10jNlqq1MI3y_kJLCtNArzGNlYJdrWshKLMPUAo74XUFd7VB5BH1HffrMcEsok0AqA-kTg=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fewen-br%25C3%25A9h%25C3%25A9lin-63305a307%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dios_app" target="_blank" rel="noopener noreferrer" aria-label="Profil LinkedIn d’Ewen Bréhélin">
+      <a class="brand" href="#top" aria-label="Accueil">
         <span class="logo" aria-hidden="true"></span>
         <span class="brand-name">Ewen Bréhélin</span>
       </a>
-      <nav class="menu">
-        <a href="https://github.com/brehelin-e" target="_blank" rel="noopener noreferrer" class="icon-link" aria-label="GitHub">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5a12 12 0 0 0-3.79 23.4c.6.1.82-.26.82-.57v-2.1c-3.34.73-4.04-1.6-4.04-1.6-.55-1.38-1.34-1.75-1.34-1.75-1.1-.76.08-.74.08-.74 1.22.09 1.86 1.25 1.86 1.25 1.08 1.85 2.83 1.32 3.52 1 .1-.8.42-1.33.76-1.64-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.5.12-3.12 0 0 1-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.62.24 2.82.12 3.12.77.84 1.24 1.9 1.24 3.22 0 4.61-2.8 5.62-5.47 5.92.43.38.82 1.12.82 2.26v3.35c0 .31.22.67.83.56A12 12 0 0 0 12 .5Z"/></svg>
-        </a>
+
+      <!-- Menu desktop -->
+      <nav class="menu desktop">
+        <a href="#projets">Projets</a>
+        <a href="#competences">Compétences</a>
+        <a href="#apropos">À propos</a>
+        <a href="#contact">Contact</a>
+        <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHBR7RTIkiM3QAAAZoMC0bo3twN-2MJ5kPlF2PrqUYC-mSToTTqY22o-KTwTbTJ_10jNlqq1MI3y_kJLCtNArzGNlYJdrWshKLMPUAo74XUFd7VB5BH1HffrMcEsok0AqA-kTg=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fewen-br%25C3%25A9h%25C3%25A9lin-63305a307%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dios_app" target="_blank" rel="noopener" class="chip small">LinkedIn</a>
+        <a href="https://github.com/brehelin-e" target="_blank" rel="noopener" class="chip small">GitHub</a>
       </nav>
+
+      <!-- Bouton hamburger mobile -->
+      <label for="nav-toggle" class="hamburger" aria-label="Ouvrir le menu" aria-controls="drawer" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </label>
     </div>
   </header>
 
-  <main class="wrap">
-    <!-- Hero -->
-    <section class="hero">
-      <p class="kicker">Administration systèmes & réseaux • Développement web</p>
-      <h1>Salut, je suis <span class="highlight">Ewen Bréhélin</span>.</h1>
-      <p class="lead">
-        Étudiant en BTS SIO, à l’aise avec Windows/Linux, réseau (VLAN, DHCP, DNS) et bases du développement (PHP, C#, HTML/CSS/JS, SQL).
-        Je crée des solutions simples, fiables et jolies.
-      </p>
-      <div class="cta">
-        <a class="btn" href="#contact">Me contacter</a>
-        <a class="btn ghost" href="#projets">Voir mes projets</a>
+  <!-- Drawer mobile -->
+  <aside id="drawer" class="drawer">
+    <div class="drawer-head">
+      <div class="brand">
+        <span class="logo" aria-hidden="true"></span>
+        <span class="brand-name">Ewen Bréhélin</span>
       </div>
-      <figure class="hero-art" aria-hidden="true">
-        <!-- Illustration IT (SVG) 100% responsive -->
-        <svg viewBox="0 0 540 300" xmlns="http://www.w3.org/2000/svg" role="img">
-          <defs>
-            <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
-              <stop offset="0" stop-color="var(--accent)"/>
-              <stop offset="1" stop-color="var(--accent-2)"/>
-            </linearGradient>
-          </defs>
-          <rect x="20" y="30" rx="18" width="500" height="220" fill="#0f1117" stroke="url(#g)" opacity="0.6"/>
-          <rect x="40" y="50" rx="10" width="460" height="36" fill="#12141b" />
-          <circle cx="62" cy="68" r="6" fill="var(--accent)"/>
-          <circle cx="82" cy="68" r="6" fill="var(--accent-2)"/>
-          <rect x="40" y="100" rx="10" width="220" height="140" fill="#12141b" />
-          <rect x="280" y="100" rx="10" width="220" height="140" fill="#12141b" />
-          <g opacity="0.9">
-            <rect x="300" y="120" width="180" height="10" rx="5" fill="url(#g)"/>
-            <rect x="300" y="140" width="140" height="10" rx="5" fill="#1b1f2b"/>
-            <rect x="300" y="160" width="160" height="10" rx="5" fill="#1b1f2b"/>
-            <rect x="300" y="180" width="110" height="10" rx="5" fill="#1b1f2b"/>
-            <rect x="300" y="200" width="170" height="10" rx="5" fill="#1b1f2b"/>
-          </g>
-          <g>
-            <rect x="60" y="120" width="60" height="52" rx="12" fill="url(#g)" opacity=".8"/>
-            <rect x="130" y="120" width="90" height="10" rx="5" fill="#1b1f2b"/>
-            <rect x="130" y="140" width="70" height="10" rx="5" fill="#1b1f2b"/>
-            <rect x="60" y="186" width="160" height="54" rx="10" fill="#0f1117" stroke="#1b1f2b"/>
-          </g>
-        </svg>
-      </figure>
+      <label for="nav-toggle" class="close" aria-label="Fermer le menu">×</label>
+    </div>
+    <nav class="drawer-links">
+      <a href="#projets">Projets</a>
+      <a href="#competences">Compétences</a>
+      <a href="#apropos">À propos</a>
+      <a href="#contact">Contact</a>
+      <hr/>
+      <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHBR7RTIkiM3QAAAZoMC0bo3twN-2MJ5kPlF2PrqUYC-mSToTTqY22o-KTwTbTJ_10jNlqq1MI3y_kJLCtNArzGNlYJdrWshKLMPUAo74XUFd7VB5BH1HffrMcEsok0AqA-kTg=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fewen-br%25C3%25A9h%25C3%25A9lin-63305a307%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dios_app" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://github.com/brehelin-e" target="_blank" rel="noopener">GitHub ↗</a>
+    </nav>
+    <label for="nav-toggle" class="overlay" aria-hidden="true"></label>
+  </aside>
+
+  <main id="top" class="wrap">
+    <!-- Hero avec avatar rond -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <p class="kicker">Administration systèmes & réseaux • Développement web</p>
+          <h1>Salut, je suis <span class="highlight">Ewen Bréhélin</span>.</h1>
+          <p class="lead">
+            Étudiant en BTS SIO. Windows / Linux, réseau (VLAN, DHCP, DNS) et bases du dev (PHP, C#, HTML/CSS/JS, SQL).
+            Je conçois des solutions simples, fiables et jolies.
+          </p>
+          <div class="cta">
+            <a class="btn" href="#contact">Me contacter</a>
+            <a class="btn ghost" href="#projets">Voir mes projets</a>
+          </div>
+        </div>
+        <div class="hero-media">
+          <!-- 👉 AJOUTE TA PHOTO ici : remplace src="avatar.jpg" par le nom de ton fichier (même dossier) -->
+          <img class="avatar" src="avatar.jpg" alt="Photo de profil d’Ewen Bréhélin" />
+          <!-- Illustration IT -->
+          <figure class="hero-art" aria-hidden="true">
+            <svg viewBox="0 0 540 300" xmlns="http://www.w3.org/2000/svg" role="img">
+              <defs>
+                <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0" stop-color="var(--accent)"/>
+                  <stop offset="1" stop-color="var(--accent-2)"/>
+                </linearGradient>
+              </defs>
+              <rect x="20" y="30" rx="18" width="500" height="220" fill="#0f1117" stroke="url(#g)" opacity="0.6"/>
+              <rect x="40" y="50" rx="10" width="460" height="36" fill="#12141b" />
+              <circle cx="62" cy="68" r="6" fill="var(--accent)"/>
+              <circle cx="82" cy="68" r="6" fill="var(--accent-2)"/>
+              <rect x="40" y="100" rx="10" width="220" height="140" fill="#12141b" />
+              <rect x="280" y="100" rx="10" width="220" height="140" fill="#12141b" />
+              <g opacity="0.9">
+                <rect x="300" y="120" width="180" height="10" rx="5" fill="url(#g)"/>
+                <rect x="300" y="140" width="140" height="10" rx="5" fill="#1b1f2b"/>
+                <rect x="300" y="160" width="160" height="10" rx="5" fill="#1b1f2b"/>
+                <rect x="300" y="180" width="110" height="10" rx="5" fill="#1b1f2b"/>
+                <rect x="300" y="200" width="170" height="10" rx="5" fill="#1b1f2b"/>
+              </g>
+            </svg>
+          </figure>
+        </div>
+      </div>
     </section>
 
     <!-- Projets -->
@@ -91,7 +127,8 @@
             </svg>
           </div>
           <h3>Neon Design Kit</h3>
-          <p class="muted">Petit design system avec thèmes.</p>
+          <p class="muted">Design system compact avec thèmes.</p>
+          <a class="chip" href="#" target="_blank" rel="noopener">Cas d’étude</a>
         </article>
         <article class="card">
           <div class="thumb">
@@ -110,7 +147,8 @@
             </svg>
           </div>
           <h3>Taskly</h3>
-          <p class="muted">Mini app de gestion de tâches.</p>
+          <p class="muted">Mini app de gestion des tâches.</p>
+          <a class="chip" href="#" target="_blank" rel="noopener">Voir la démo</a>
         </article>
       </div>
     </section>
@@ -147,22 +185,27 @@
       </div>
     </section>
 
-    <!-- Formation -->
-    <section id="formation" class="section">
-      <h2>Formation</h2>
+    <!-- À propos -->
+    <section id="apropos" class="section">
+      <h2>À propos</h2>
       <div class="grid-2">
         <div class="card">
-          <h3>BTS SIO</h3>
-          <p class="muted">Lycée Saint‑Louis, Châteaulin — en cours</p>
+          <p>
+            Basé à Pluguffan (Finistère). À l’aise en support utilisateur, installation matérielle/logicielle
+            et documentation. Curieux, rigoureux et motivé.
+          </p>
         </div>
         <div class="card">
-          <h3>Baccalauréat Systèmes Numériques</h3>
-          <p class="muted">2022</p>
+          <ul class="bullets">
+            <li><strong>Langues :</strong> Français (natif), Anglais (B1)</li>
+            <li><strong>Intérêts :</strong> Basket-ball, Rap</li>
+            <li><strong>Mobilité :</strong> Bretagne • Remote possible</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- Contact (sans JS, HTML5 required + mailto) -->
+    <!-- Contact -->
     <section id="contact" class="section">
       <h2>Contact</h2>
       <div class="card contact">
@@ -203,10 +246,10 @@
         </form>
 
         <div class="contact-alt">
-          <a class="chip" href="mailto:brehelin-e@saint-louis29.net">📧 Email direct</a>
+          <a class="chip" href="mailto:brehelin-e@saint-louis29.net">📧 Email</a>
           <a class="chip" href="tel:+33772720438">📞 07 72 72 04 38</a>
-          <a class="chip" href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHBR7RTIkiM3QAAAZoMC0bo3twN-2MJ5kPlF2PrqUYC-mSToTTqY22o-KTwTbTJ_10jNlqq1MI3y_kJLCtNArzGNlYJdrWshKLMPUAo74XUFd7VB5BH1HffrMcEsok0AqA-kTg=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fewen-br%25C3%25A9h%25C3%25A9lin-63305a307%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dios_app" target="_blank" rel="noopener noreferrer">💼 LinkedIn</a>
-          <a class="chip" href="https://github.com/brehelin-e" target="_blank" rel="noopener noreferrer">🐙 GitHub</a>
+          <a class="chip" href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHBR7RTIkiM3QAAAZoMC0bo3twN-2MJ5kPlF2PrqUYC-mSToTTqY22o-KTwTbTJ_10jNlqq1MI3y_kJLCtNArzGNlYJdrWshKLMPUAo74XUFd7VB5BH1HffrMcEsok0AqA-kTg=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fewen-br%25C3%25A9h%25C3%25A9lin-63305a307%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dios_app" target="_blank" rel="noopener">💼 LinkedIn</a>
+          <a class="chip" href="https://github.com/brehelin-e" target="_blank" rel="noopener">🐙 GitHub</a>
         </div>
       </div>
     </section>

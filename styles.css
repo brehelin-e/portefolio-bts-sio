@@ -7,17 +7,17 @@
   --radius:16px; --shadow:0 12px 36px rgba(0,0,0,.4);
   --max:1000px;
 }
-/* Reset & base (mobile-first) */
+/* Reset & base */
 *{box-sizing:border-box} html,body{height:100%}
+html{scroll-behavior:smooth}
 body{
   margin:0; font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
   color:var(--text); background:var(--bg); line-height:1.6; -webkit-font-smoothing:antialiased;
 }
-a{color:inherit; text-decoration:none}
-img,svg{max-width:100%; display:block}
+a{color:inherit; text-decoration:none} img,svg{max-width:100%; display:block}
 .wrap{max-width:var(--max); margin:0 auto; padding:0 16px}
 
-/* Fond fluide (jamais coupé) */
+/* Fond fluide (plein écran, non coupé) */
 .bg{
   position:fixed; inset:0; z-index:-1; pointer-events:none;
   background:
@@ -29,7 +29,7 @@ img,svg{max-width:100%; display:block}
 }
 
 /* Header */
-.site-header{position:sticky; top:0; background:color-mix(in hsl, var(--panel) 80%, transparent); border-bottom:1px solid var(--border); backdrop-filter:blur(8px); z-index:10}
+.site-header{position:sticky; top:0; background:color-mix(in hsl, var(--panel) 80%, transparent); border-bottom:1px solid var(--border); backdrop-filter:blur(8px); z-index:20}
 .nav{display:flex; align-items:center; justify-content:space-between; padding:12px 0}
 .brand{display:flex; align-items:center; gap:10px; font-weight:700}
 .logo{width:28px; height:28px; border-radius:10px;
@@ -37,21 +37,45 @@ img,svg{max-width:100%; display:block}
               linear-gradient(135deg, var(--accent), var(--accent-2));
   box-shadow: inset 0 0 0 2px rgba(255,255,255,.14), var(--shadow);
 }
-.icon-link{display:grid; place-items:center; width:38px; height:38px; border:1px solid var(--border); border-radius:12px; background:color-mix(in hsl, var(--panel-2) 85%, transparent)}
+.menu.desktop{display:none; gap:16px; align-items:center}
+.menu.desktop a{padding:8px 12px; border-radius:10px; border:1px solid transparent}
+.menu.desktop a:hover{border-color:var(--border); background:color-mix(in hsl, var(--panel-2) 70%, transparent)}
+.chip.small{font-size:12px; border:1px solid var(--border); border-radius:999px; padding:6px 10px; background:color-mix(in hsl, var(--panel-2) 85%, transparent)}
 
-/* Section hero */
-.hero{padding:56px 0 32px}
+/* Hamburger */
+.hamburger{width:40px; height:40px; display:grid; place-items:center; border:1px solid var(--border); border-radius:12px; background:color-mix(in hsl, var(--panel-2) 85%, transparent); cursor:pointer}
+.hamburger span{display:block; width:18px; height:2px; background:var(--text); border-radius:2px; position:relative}
+.hamburger span+span{margin-top:4px}
+
+/* Drawer mobile (sans JS) */
+.nav-toggle{position:absolute; opacity:0; pointer-events:none}
+.drawer{position:fixed; inset:0; z-index:30; display:block; pointer-events:none}
+.drawer .overlay{position:absolute; inset:0; background:rgba(0,0,0,.35); opacity:0; transition:opacity .2s}
+.drawer .drawer-head{position:absolute; top:0; left:0; right:0; height:56px; display:flex; align-items:center; justify-content:space-between; padding:0 14px}
+.drawer .brand{gap:10px}
+.drawer .close{font-size:28px; width:44px; height:44px; display:grid; place-items:center; border:1px solid var(--border); border-radius:12px; background:color-mix(in hsl, var(--panel-2) 85%, transparent); cursor:pointer}
+.drawer .drawer-links{position:absolute; top:56px; bottom:0; left:0; width:78vw; max-width:320px; background:color-mix(in hsl, var(--panel) 95%, transparent); border-right:1px solid var(--border); transform:translateX(-100%); transition:transform .25s; padding:14px; display:flex; flex-direction:column; gap:8px; pointer-events:auto}
+.drawer .drawer-links a{padding:10px 12px; border-radius:10px; border:1px solid transparent}
+.drawer .drawer-links a:hover{border-color:var(--border); background:color-mix(in hsl, var(--panel-2) 75%, transparent)}
+.nav-toggle:checked ~ .drawer .drawer-links{transform:none}
+.nav-toggle:checked ~ .drawer .overlay{opacity:1; pointer-events:auto}
+
+/* Hero */
+.hero{padding:56px 0 28px}
+.hero-grid{display:grid; grid-template-columns:1fr; gap:16px}
 .kicker{color:var(--muted); font-size:14px; margin:0 0 6px}
-h1{font-size:clamp(28px, 7vw, 40px); margin:0 0 10px; line-height:1.15}
+h1{font-size:clamp(28px, 7vw, 42px); margin:0 0 10px; line-height:1.15}
 .highlight{background:linear-gradient(90deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent}
 .lead{color:var(--muted)}
 .cta{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
 .btn{display:inline-block; padding:10px 14px; border-radius:12px; border:1px solid var(--border); background:color-mix(in hsl, var(--panel) 85%, transparent)}
 .btn.ghost{background:transparent}
-.hero-art{margin-top:20px; border:1px solid var(--border); border-radius:16px; padding:8px; background:color-mix(in hsl, var(--panel-2) 85%, transparent)}
+.hero-media{display:grid; grid-template-columns:auto; gap:12px}
+.avatar{width:132px; height:132px; border-radius:50%; object-fit:cover; border:2px solid var(--border); box-shadow:var(--shadow)}
+.hero-art{border:1px solid var(--border); border-radius:16px; padding:8px; background:color-mix(in hsl, var(--panel-2) 85%, transparent)}
 
-/* Sections génériques */
-.section{padding:32px 0; border-top:1px solid var(--border)}
+/* Sections */
+.section{padding:28px 0; border-top:1px solid var(--border)}
 .section h2{margin:0 0 14px; font-size:18px}
 
 /* Grilles & cartes */
@@ -59,9 +83,9 @@ h1{font-size:clamp(28px, 7vw, 40px); margin:0 0 10px; line-height:1.15}
 .grid-3{display:grid; grid-template-columns:1fr; gap:14px}
 .card{background:color-mix(in hsl, var(--panel) 85%, transparent); border:1px solid var(--border); border-radius:var(--radius); padding:14px; box-shadow:var(--shadow)}
 .thumb{border:1px solid var(--border); border-radius:12px; overflow:hidden; background:color-mix(in hsl, var(--panel-2) 85%, transparent); margin-bottom:10px}
-.bullets{margin:0; padding-left:18px}
-.bullets li{margin:4px 0}
+.bullets{margin:0; padding-left:18px} .bullets li{margin:4px 0}
 .muted{color:var(--muted)}
+.chip{display:inline-block; padding:8px 10px; border:1px solid var(--border); border-radius:999px; background:color-mix(in hsl, var(--panel-2) 85%, transparent); font-size:14px}
 
 /* Contact */
 .contact form{display:grid; gap:12px}
@@ -69,7 +93,6 @@ h1{font-size:clamp(28px, 7vw, 40px); margin:0 0 10px; line-height:1.15}
 input, textarea, select{width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); background:color-mix(in hsl, var(--panel) 85%, transparent); color:var(--text); outline:none}
 input:focus, textarea:focus, select:focus{box-shadow:0 0 0 6px rgba(124,92,255,.08); border-color:color-mix(in hsl, var(--accent) 60%, var(--border))}
 .contact-alt{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
-.chip{padding:8px 10px; border:1px solid var(--border); border-radius:999px; background:color-mix(in hsl, var(--panel-2) 85%, transparent); font-size:14px}
 
 /* Footer */
 .site-footer{padding:24px 0 40px; border-top:1px solid var(--border); color:var(--muted); font-size:14px}
@@ -77,8 +100,12 @@ input:focus, textarea:focus, select:focus{box-shadow:0 0 0 6px rgba(124,92,255,.
 .top{border:1px solid var(--border); border-radius:999px; padding:8px 12px; background:color-mix(in hsl, var(--panel-2) 85%, transparent)}
 
 /* Desktop améliorations */
-@media (min-width: 820px){
-  .hero{padding:80px 0 48px}
+@media (min-width: 860px){
+  .menu.desktop{display:flex}
+  .hamburger{display:none}
+  .hero{padding:80px 0 40px}
+  .hero-grid{grid-template-columns:1.1fr .9fr}
   .grid-2{grid-template-columns:1fr 1fr}
   .grid-3{grid-template-columns:repeat(3,1fr)}
+  .avatar{width:160px; height:160px}
 }
