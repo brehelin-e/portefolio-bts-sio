@@ -8,59 +8,60 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Fond fluide plein écran -->
   <div class="bg" aria-hidden="true"></div>
 
-  <!-- Toggle du menu (hack CSS, pas de JS) -->
   <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
 
   <header class="site-header">
     <div class="wrap nav">
       <a class="brand" href="#top" aria-label="Accueil">
-        <span class="logo" aria-hidden="true"></span>
+        <img class="brand-avatar" src="./image/avatar.jpeg" alt="" />
         <span class="brand-name">Ewen Bréhélin</span>
       </a>
 
-      <!-- Menu desktop -->
       <nav class="menu desktop">
         <a href="#projets">Projets</a>
         <a href="#competences">Compétences</a>
         <a href="#apropos">À propos</a>
+        <a href="#parcours">Parcours</a>
         <a href="#contact">Contact</a>
-        <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHBR7RTIkiM3QAAAZoMC0bo3twN-2MJ5kPlF2PrqUYC-mSToTTqY22o-KTwTbTJ_10jNlqq1MI3y_kJLCtNArzGNlYJdrWshKLMPUAo74XUFd7VB5BH1HffrMcEsok0AqA-kTg=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fewen-br%25C3%25A9h%25C3%25A9lin-63305a307%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dios_app" target="_blank" rel="noopener" class="chip small">LinkedIn</a>
-        <a href="https://github.com/brehelin-e" target="_blank" rel="noopener" class="chip small">GitHub</a>
+        <a class="icon-link" href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHBR7RTIkiM3QAAAZoMC0bo3twN-2MJ5kPlF2PrqUYC-mSToTTqY22o-KTwTbTJ_10jNlqq1MI3y_kJLCtNArzGNlYJdrWshKLMPUAo74XUFd7VB5BH1HffrMcEsok0AqA-kTg=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fewen-br%25C3%25A9h%25C3%25A9lin-63305a307%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dios_app" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zm7.5 0h3.8v1.98h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V23h-4v-6.46c0-1.54-.03-3.52-2.15-3.52-2.15 0-2.48 1.67-2.48 3.4V23h-4V8.5z"/></svg>
+        </a>
+        <a class="icon-link" href="https://github.com/brehelin-e" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5a12 12 0 0 0-3.79 23.4c.6.1.82-.26.82-.57v-2.1c-3.34.73-4.04-1.6-4.04-1.6-.55-1.38-1.34-1.75-1.34-1.75-1.1-.76.08-.74.08-.74 1.22.09 1.86 1.25 1.86 1.25 1.08 1.85 2.83 1.32 3.52 1 .1-.8.42-1.33.76-1.64-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.5.12-3.12 0 0 1-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.62.24 2.82.12 3.12.77.84 1.24 1.9 1.24 3.22 0 4.61-2.8 5.62-5.47 5.92.43.38.82 1.12.82 2.26v3.35c0 .31.22.67.83.56A12 12 0 0 0 12 .5Z"/></svg>
+        </a>
       </nav>
 
-      <!-- Bouton hamburger mobile -->
       <label for="nav-toggle" class="hamburger" aria-label="Ouvrir le menu" aria-controls="drawer" aria-expanded="false">
         <span></span><span></span><span></span>
       </label>
     </div>
   </header>
 
-  <!-- Drawer mobile -->
   <aside id="drawer" class="drawer">
-    <div class="drawer-head">
-      <div class="brand">
-        <span class="logo" aria-hidden="true"></span>
-        <span class="brand-name">Ewen Bréhélin</span>
-      </div>
       <label for="nav-toggle" class="close" aria-label="Fermer le menu">×</label>
     </div>
     <nav class="drawer-links">
       <a href="#projets">Projets</a>
       <a href="#competences">Compétences</a>
       <a href="#apropos">À propos</a>
+      <a href="#parcours">Parcours</a>
       <a href="#contact">Contact</a>
       <hr/>
-      <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHBR7RTIkiM3QAAAZoMC0bo3twN-2MJ5kPlF2PrqUYC-mSToTTqY22o-KTwTbTJ_10jNlqq1MI3y_kJLCtNArzGNlYJdrWshKLMPUAo74XUFd7VB5BH1HffrMcEsok0AqA-kTg=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fewen-br%25C3%25A9h%25C3%25A9lin-63305a307%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dios_app" target="_blank" rel="noopener">LinkedIn ↗</a>
-      <a href="https://github.com/brehelin-e" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHBR7RTIkiM3QAAAZoMC0bo3twN-2MJ5kPlF2PrqUYC-mSToTTqY22o-KTwTbTJ_10jNlqq1MI3y_kJLCtNArzGNlYJdrWshKLMPUAo74XUFd7VB5BH1HffrMcEsok0AqA-kTg=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fewen-br%25C3%25A9h%25C3%25A9lin-63305a307%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dios_app" target="_blank" rel="noopener" class="row-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zm7.5 0h3.8v1.98h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V23h-4v-6.46c0-1.54-.03-3.52-2.15-3.52-2.15 0-2.48 1.67-2.48 3.4V23h-4V8.5z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/brehelin-e" target="_blank" rel="noopener" class="row-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5a12 12 0 0 0-3.79 23.4c.6.1.82-.26.82-.57v-2.1c-3.34.73-4.04-1.6-4.04-1.6-.55-1.38-1.34-1.75-1.34-1.75-1.1-.76.08-.74.08-.74 1.22.09 1.86 1.25 1.86 1.25 1.08 1.85 2.83 1.32 3.52 1 .1-.8.42-1.33.76-1.64-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.5.12-3.12 0 0 1-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.62.24 2.82.12 3.12.77.84 1.24 1.9 1.24 3.22 0 4.61-2.8 5.62-5.47 5.92.43.38.82 1.12.82 2.26v3.35c0 .31.22.67.83.56A12 12 0 0 0 12 .5Z"/></svg>
+        GitHub
+      </a>
     </nav>
     <label for="nav-toggle" class="overlay" aria-hidden="true"></label>
   </aside>
 
   <main id="top" class="wrap">
-    <!-- Hero avec avatar rond -->
     <section class="hero">
       <div class="hero-grid">
         <div class="hero-text">
@@ -76,17 +77,10 @@
           </div>
         </div>
         <div class="hero-media">
-          <!-- 👉 AJOUTE TA PHOTO ici : remplace src="avatar.jpg" par le nom de ton fichier (même dossier) -->
           <img class="avatar" src="avatar.jpg" alt="Photo de profil d’Ewen Bréhélin" />
-          <!-- Illustration IT -->
           <figure class="hero-art" aria-hidden="true">
             <svg viewBox="0 0 540 300" xmlns="http://www.w3.org/2000/svg" role="img">
-              <defs>
-                <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
-                  <stop offset="0" stop-color="var(--accent)"/>
-                  <stop offset="1" stop-color="var(--accent-2)"/>
-                </linearGradient>
-              </defs>
+              <defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="var(--accent)"/><stop offset="1" stop-color="var(--accent-2)"/></linearGradient></defs>
               <rect x="20" y="30" rx="18" width="500" height="220" fill="#0f1117" stroke="url(#g)" opacity="0.6"/>
               <rect x="40" y="50" rx="10" width="460" height="36" fill="#12141b" />
               <circle cx="62" cy="68" r="6" fill="var(--accent)"/>
@@ -106,54 +100,43 @@
       </div>
     </section>
 
-    <!-- Projets -->
     <section id="projets" class="section">
-      <h2>Projets</h2>
-      <div class="grid-2">
-        <article class="card">
-          <div class="thumb">
-            <svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect x="10" y="10" width="400" height="180" rx="14" fill="#12141b" />
-              <rect x="24" y="26" width="140" height="12" rx="6" fill="url(#gt1)"/>
-              <rect x="24" y="52" width="180" height="10" rx="5" fill="#1a1f2a"/>
-              <rect x="24" y="72" width="160" height="10" rx="5" fill="#1a1f2a"/>
-              <rect x="220" y="52" width="170" height="110" rx="10" fill="#191e29"/>
-              <defs>
-                <linearGradient id="gt1" x1="0" x2="1" y1="0" y2="1">
-                  <stop offset="0" stop-color="var(--accent)"/>
-                  <stop offset="1" stop-color="var(--accent-2)"/>
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-          <h3>Neon Design Kit</h3>
-          <p class="muted">Design system compact avec thèmes.</p>
-          <a class="chip" href="#" target="_blank" rel="noopener">Cas d’étude</a>
+      <h2>Projets & Stages</h2>
+      <p class="hint">Glisse horizontalement. → Derniers à droite • Anciens à gauche.</p>
+      <div class="hscroll row-reverse">
+        <article class="card snap">
+          <div class="badge">2025</div>
+          <h3>Portfolio Ewen</h3>
+          <p class="muted">Refonte mobile-first, nav drawer, sans JS.</p>
+          <div class="tags"><span>HTML/CSS</span><span>UI</span></div>
         </article>
-        <article class="card">
-          <div class="thumb">
-            <svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect x="10" y="10" width="400" height="180" rx="14" fill="#12141b" />
-              <rect x="24" y="24" width="110" height="160" rx="12" fill="#191e29"/>
-              <rect x="154" y="24" width="110" height="160" rx="12" fill="#191e29"/>
-              <rect x="284" y="24" width="110" height="160" rx="12" fill="#191e29"/>
-              <rect x="32" y="40" width="86" height="12" rx="6" fill="url(#gt2)"/>
-              <defs>
-                <linearGradient id="gt2" x1="0" x2="1" y1="0" y2="1">
-                  <stop offset="0" stop-color="var(--accent)"/>
-                  <stop offset="1" stop-color="var(--accent-2)"/>
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-          <h3>Taskly</h3>
-          <p class="muted">Mini app de gestion des tâches.</p>
-          <a class="chip" href="#" target="_blank" rel="noopener">Voir la démo</a>
+        <article class="card snap">
+          <div class="badge">2024</div>
+          <h3>Stage — Terre de l’Ouest</h3>
+          <p class="muted">Serveur de supervision & gestion du parc (Centreon).</p>
+          <div class="tags"><span>Centreon</span><span>Infra</span></div>
+        </article>
+        <article class="card snap">
+          <div class="badge">2023</div>
+          <h3>Stage — Pelik356</h3>
+          <p class="muted">Découverte agence, SEO & tâches web.</p>
+          <div class="tags"><span>SEO</span><span>Web</span></div>
+        </article>
+        <article class="card snap">
+          <div class="badge">2023</div>
+          <h3>Stage — SAVE (Quimper)</h3>
+          <p class="muted">Accueil, diagnostic & réparations smartphone.</p>
+          <div class="tags"><span>Support</span><span>Hardware</span></div>
+        </article>
+        <article class="card snap">
+          <div class="badge">2022</div>
+          <h3>Stage — Conseil Départemental 29</h3>
+          <p class="muted">Déploiement postes, config scanners, maintenance.</p>
+          <div class="tags"><span>Support</span><span>Déploiement</span></div>
         </article>
       </div>
     </section>
 
-    <!-- Compétences -->
     <section id="competences" class="section">
       <h2>Compétences</h2>
       <div class="grid-3">
@@ -185,15 +168,12 @@
       </div>
     </section>
 
-    <!-- À propos -->
     <section id="apropos" class="section">
       <h2>À propos</h2>
       <div class="grid-2">
         <div class="card">
-          <p>
-            Basé à Pluguffan (Finistère). À l’aise en support utilisateur, installation matérielle/logicielle
-            et documentation. Curieux, rigoureux et motivé.
-          </p>
+          <p>Basé à Pluguffan (Finistère). À l’aise en support utilisateur, installation matérielle/logicielle
+            et documentation. Curieux, rigoureux et motivé.</p>
         </div>
         <div class="card">
           <ul class="bullets">
@@ -205,7 +185,28 @@
       </div>
     </section>
 
-    <!-- Contact -->
+    <section id="parcours" class="section">
+      <h2>Parcours scolaire</h2>
+      <ol class="vtimeline">
+        <li>
+          <div class="dot"></div>
+          <time>2024 — 2026</time>
+          <div class="vt-card">
+            <h3>BTS SIO</h3>
+            <p class="muted">Lycée Saint‑Louis, Châteaulin — en cours</p>
+          </div>
+        </li>
+        <li>
+          <div class="dot"></div>
+          <time>2022</time>
+          <div class="vt-card">
+            <h3>Baccalauréat Systèmes Numériques</h3>
+            <p class="muted">Obtenu</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
     <section id="contact" class="section">
       <h2>Contact</h2>
       <div class="card contact">
