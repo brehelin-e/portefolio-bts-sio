@@ -71,7 +71,7 @@
   </aside>
 
   <main id="content" tabindex="-1">
-    <!-- ===== HERO : avatar dans la carte (plus de recouvrement header) ===== -->
+    <!-- ===== HERO ===== -->
     <section class="hero">
       <div class="wrap">
         <div class="hero-card">
@@ -158,22 +158,6 @@
               <li>Réparations encadrées, tests qualité, sauvegardes/restaurations.</li>
               <li>Relation client & explications post-intervention.</li>
               <li>Organisation du poste & sécurité (ESD, pièces).</li>
-            </ul>
-          </article>
-
-          <article class="stage card">
-            <div class="stage-head">
-              <img class="logo" src="./logos/pelik356.png" width="56" height="56" loading="lazy" decoding="async" alt="Logo Pelik356" />
-              <div class="meta">
-                <h3>Pelik356 — Web & SEO</h3>
-                <span class="badge">Durée : xx semaines</span>
-              </div>
-            </div>
-            <ul class="bullets">
-              <li>Mises à jour de contenus & micro-intégrations HTML/CSS.</li>
-              <li>Initiation SEO : balises, métadonnées, perfs de base.</li>
-              <li>Tests multi-écrans, retours QA.</li>
-              <li>Mini comptes-rendus d’avancement.</li>
             </ul>
           </article>
 
@@ -300,7 +284,9 @@
         </header>
 
         <div class="card contact">
-          <form action="mailto:brehelin-e@saint-louis29.net" method="post" enctype="text/plain">
+          <!-- ✅ FormSubmit : envoie sans ouvrir la messagerie -->
+          <form action="https://formsubmit.co/brehelin-e@saint-louis29.net" method="POST">
+            <!-- Champs visibles -->
             <div class="grid-2">
               <div class="field">
                 <label for="prenom">Prénom *</label>
@@ -330,6 +316,17 @@
               <label for="message">Message *</label>
               <textarea id="message" name="Message" rows="5" required placeholder="Écrivez votre message ici..."></textarea>
             </div>
+
+            <!-- Champs cachés utiles -->
+            <input type="hidden" name="_subject" value="Nouveau message via le portfolio" />
+            <!-- Redirection après envoi (tu peux créer /merci.html, sinon laisse tel quel) -->
+            <input type="hidden" name="_next" value="https://example.com/#contact" />
+            <!-- Empêche la page de FormSubmit d’afficher le récap -->
+            <input type="hidden" name="_template" value="table" />
+            <!-- Anti-spam (honeypot) -->
+            <input type="text" name="_honey" style="display:none" />
+            <input type="hidden" name="_captcha" value="false" />
+
             <button class="btn" type="submit">Envoyer</button>
           </form>
 
@@ -355,7 +352,7 @@
     </div>
   </footer>
 
-  <!-- Modale CV -->
+  <!-- Modales -->
   <div id="cv-modal" class="modal" aria-hidden="true">
     <a href="#top" class="modal-overlay" aria-label="Fermer"></a>
     <div class="modal-card large" role="dialog" aria-modal="true" aria-labelledby="cv-title">
@@ -368,7 +365,6 @@
     </div>
   </div>
 
-  <!-- Modale Certifications -->
   <div id="cert-modal" class="modal" aria-hidden="true">
     <a href="#top" class="modal-overlay" aria-label="Fermer"></a>
     <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="cert-title">

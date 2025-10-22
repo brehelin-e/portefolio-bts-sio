@@ -7,11 +7,10 @@
   --radius:16px; --shadow:0 12px 36px rgba(0,0,0,.4);
   --max:1100px;
 
-  --fs-12:12px; --fs-14:14px; --fs-16:16px; --fs-18:18px;
-  --fs-20:20px; --fs-24:24px; --fs-44:clamp(30px,6.5vw,42px);
+  --fs-12:12px; --fs-14:14px; --fs-16:16px; --fs-18:18px; --fs-24:24px;
+  --fs-44:clamp(30px,6.5vw,42px);
   --lh:1.6;
 
-  /* tailles header + décalage d’ancrage */
   --header-h: 60px;
   --scroll-offset: calc(var(--header-h) + 16px);
 }
@@ -59,7 +58,7 @@ img,svg{max-width:100%; display:block}
   height:var(--header-h);
 }
 .nav{display:flex; align-items:center; justify-content:space-between; height:100%}
-.brand{display:flex; align-items:center; gap:10px; padding:0 0 0 0}
+.brand{display:flex; align-items:center; gap:10px}
 .brand-avatar{width:34px; height:34px; border-radius:50%; object-fit:cover; border:1px solid var(--border)}
 @media (min-width: 860px){ .brand-avatar{ width:40px; height:40px } }
 .brand-name{ font-weight:600; font-size:14px }
@@ -73,38 +72,17 @@ img,svg{max-width:100%; display:block}
 .icon-link{display:grid; place-items:center; width:36px; height:36px; border:1px solid var(--border); border-radius:12px; background:color-mix(in hsl, var(--panel-2) 85%, transparent)}
 .icon-link svg{width:20px; height:20px}
 
-/* Burger */
-.hamburger{
-  width:42px; height:42px; display:grid; place-items:center;
-  border:1px solid var(--border); border-radius:12px;
-  background:color-mix(in hsl, var(--panel-2) 85%, transparent);
-  cursor:pointer; -webkit-tap-highlight-color:transparent; z-index:80;
-}
+/* Burger & drawer (identiques à avant) */
+.hamburger{ width:42px; height:42px; display:grid; place-items:center; border:1px solid var(--border); border-radius:12px; background:color-mix(in hsl, var(--panel-2) 85%, transparent); cursor:pointer; -webkit-tap-highlight-color:transparent; z-index:80 }
 .hamburger span{display:block; width:20px; height:2px; background:var(--text); border-radius:2px}
 .hamburger span+span{margin-top:4px}
-
-/* Drawer mobile */
 .drawer{position:fixed; inset:0; z-index:75; display:block; pointer-events:none; visibility:hidden}
 .drawer .overlay{position:absolute; inset:0; background:rgba(0,0,0,.5); opacity:0; transition:opacity .2s; z-index:1}
-.drawer .drawer-head{
-  position:absolute; top:0; left:0; right:0; height:56px;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:0 14px; opacity:0; transition:opacity .2s; z-index:4;
-}
+.drawer .drawer-head{position:absolute; top:0; left:0; right:0; height:56px; display:flex; align-items:center; justify-content:space-between; padding:0 14px; opacity:0; transition:opacity .2s; z-index:4}
 .drawer .brand{display:flex; align-items:center; gap:10px}
 .drawer .brand .brand-avatar{width:28px; height:28px}
-.drawer .close{
-  font-size:26px; width:40px; height:40px; display:grid; place-items:center;
-  border:1px solid var(--border); border-radius:10px;
-  background:color-mix(in hsl, var(--panel-2) 85%, transparent); cursor:pointer;
-}
-.drawer .drawer-links{
-  position:absolute; top:56px; bottom:0; left:0; width:82vw; max-width:340px;
-  background:color-mix(in hsl, var(--panel) 95%, transparent);
-  border-right:1px solid var(--border);
-  transform:translateX(-110%); transition:transform .25s; z-index:3;
-  padding:16px; display:flex; flex-direction:column; gap:10px; pointer-events:auto;
-}
+.drawer .close{font-size:26px; width:40px; height:40px; display:grid; place-items:center; border:1px solid var(--border); border-radius:10px; background:color-mix(in hsl, var(--panel-2) 85%, transparent); cursor:pointer}
+.drawer .drawer-links{position:absolute; top:56px; bottom:0; left:0; width:82vw; max-width:340px; background:color-mix(in hsl, var(--panel) 95%, transparent); border-right:1px solid var(--border); transform:translateX(-110%); transition:transform .25s; z-index:3; padding:16px; display:flex; flex-direction:column; gap:10px; pointer-events:auto}
 .drawer .drawer-links a{padding:12px 14px; border-radius:10px; border:1px solid transparent}
 .drawer .drawer-links a:hover{border-color:var(--border); background:color-mix(in hsl, var(--panel-2) 75%, transparent)}
 .drawer .row-icon{display:flex; align-items:center; gap:10px}
@@ -115,11 +93,8 @@ img,svg{max-width:100%; display:block}
 .drawer:target .overlay{opacity:1; pointer-events:auto}
 html:has(#menu:target){overflow:hidden}
 
-/* ===== HERO (ne coupe jamais l’avatar) ===== */
-.hero{
-  /* pousse toujours sous le header + safe area iOS */
-  padding: calc(var(--header-h) + env(safe-area-inset-top, 0px) + 16px) 0 24px;
-}
+/* ===== HERO ===== */
+.hero{ padding: calc(var(--header-h) + env(safe-area-inset-top, 0px) + 16px) 0 24px; }
 .hero-card{
   position:relative;
   background:linear-gradient(180deg, color-mix(in hsl, var(--panel) 88%, transparent), color-mix(in hsl, var(--panel-2) 92%, transparent));
@@ -128,10 +103,7 @@ html:has(#menu:target){overflow:hidden}
   padding:18px 18px 20px;
   box-shadow:0 20px 60px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04);
   text-align:center;
-  overflow:visible; /* important pour iOS */
 }
-
-/* Anneau dégradé qui ne rogne jamais */
 .avatar-ring{
   display:grid; place-items:center; margin:10px auto 12px;
   width: clamp(120px, 40vw, 156px); height: clamp(120px, 40vw, 156px);
@@ -139,11 +111,7 @@ html:has(#menu:target){overflow:hidden}
   background:conic-gradient(from 120deg, var(--accent), var(--accent-2), var(--accent));
   box-shadow:0 10px 30px rgba(0,0,0,.45);
 }
-.avatar{
-  width:100%; height:100%; border-radius:50%; object-fit:cover;
-  background:#0f1117; border:2px solid rgba(255,255,255,.14); display:block;
-}
-
+.avatar{ width:100%; height:100%; border-radius:50%; object-fit:cover; background:#0f1117; border:2px solid rgba(255,255,255,.14); display:block }
 .kicker{color:var(--muted); font-size:12px; margin:4px 0 6px; letter-spacing:.3px; text-transform:uppercase}
 .title{font-size:var(--fs-44); margin:0 0 6px; line-height:1.15; background:linear-gradient(90deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent}
 .lead{color:var(--muted); font-size:16px; margin:0 2px 8px}
@@ -157,24 +125,20 @@ html:has(#menu:target){overflow:hidden}
 .cta-secondary{display:flex; gap:10px; margin-top:10px; flex-wrap:wrap; justify-content:center}
 .pill{display:inline-block; padding:8px 14px; border-radius:999px; border:1px solid var(--border); background:color-mix(in hsl, var(--panel-2) 85%, transparent); font-size:14px}
 
-/* Desktop : avatar + texte côte à côte, rien n’est rogné */
 @media (min-width:860px){
   .hero{ padding: calc(var(--header-h) + 24px) 0 44px }
-  .hero-card{
-    display:grid; grid-template-columns:1fr 1.2fr; align-items:center; gap:28px; text-align:left; padding:28px;
-  }
+  .hero-card{ display:grid; grid-template-columns:1fr 1.2fr; align-items:center; gap:28px; text-align:left; padding:28px }
   .avatar-ring{ width:210px; height:210px; margin:0 }
   .cta, .cta-secondary{ justify-content:flex-start }
 }
 
-/* ===== Sections ===== */
+/* Sections, cartes, skills, timeline, formulaire, footer, modales — inchangé */
 .section{padding:64px 0; border-top:1px solid var(--border)}
 .section:first-of-type{border-top:0}
 .section-head{margin:0 0 18px}
 .section-head h2{margin:0 0 6px; font-size:24px; letter-spacing:.2px}
 .section-sub{margin:0; color:var(--muted); font-size:16px}
 
-/* ===== Stages ===== */
 .stages-grid{display:grid; gap:16px}
 @media (min-width: 860px){ .stages-grid{grid-template-columns:1fr 1fr} }
 .card{background:color-mix(in hsl, var(--panel) 85%, transparent); border:1px solid var(--border); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow)}
@@ -185,13 +149,10 @@ html:has(#menu:target){overflow:hidden}
 .stage .badge{ font-size:12px; color:var(--muted); border:1px solid var(--border); border-radius:999px; padding:3px 10px }
 @media (min-width:860px){ .center-desktop{ grid-column:1 / -1; justify-self:center; max-width:540px; width:100% }}
 
-/* ===== Compétences, timeline, contact, footer (inchangés) ===== */
+/* compétences */
 .skills{display:grid; gap:16px}
 @media (min-width: 860px){ .skills{grid-template-columns:repeat(3,1fr)} }
-.skill{
-  background:linear-gradient(180deg, color-mix(in hsl, var(--panel) 85%, transparent), color-mix(in hsl, var(--panel-2) 92%, transparent));
-  border:1px solid var(--border); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow)
-}
+.skill{background:linear-gradient(180deg, color-mix(in hsl, var(--panel) 85%, transparent), color-mix(in hsl, var(--panel-2) 92%, transparent)); border:1px solid var(--border); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow)}
 .skill .row{display:flex; align-items:center; justify-content:space-between; gap:10px}
 .chip{display:inline-block; padding:6px 10px; border:1px solid var(--border); border-radius:999px; background:color-mix(in hsl, var(--panel-2) 85%, transparent); font-size:12px; color:var(--muted)}
 .meter{height:10px; border-radius:999px; background:#10131a; border:1px solid var(--border); margin:10px 0 12px; overflow:hidden}
