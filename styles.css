@@ -151,3 +151,19 @@ input:focus, textarea:focus, select:focus{box-shadow:0 0 0 6px rgba(124,92,255,.
   .icon-link{width:36px; height:36px; border-radius:12px}
   .icon-link svg{width:20px; height:20px}
 }
+/* taille modale + frame PDF */
+.modal-card.large { max-width: 940px; }
+.pdf-frame {
+  width: 100%;
+  height: 70vh;      /* plein écran mobile */
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #0f1117;
+}
+@media (min-width: 860px){
+  .pdf-frame { height: 80vh; }  /* plus haut sur desktop */
+}
+
+/* lien vert (optionnel) */
+.link { color: var(--green); font-weight: 600; border-bottom: 1px dashed var(--green); transition: opacity .2s; }
+.link:hover { opacity: .8; }
