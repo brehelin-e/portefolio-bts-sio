@@ -284,9 +284,8 @@
         </header>
 
         <div class="card contact">
-          <!-- ✅ FormSubmit : envoie sans ouvrir la messagerie -->
-          <form action="https://formsubmit.co/brehelin-e@saint-louis29.net" method="POST">
-            <!-- Champs visibles -->
+          <!-- ✅ FormSubmit : envoi sans ouvrir la messagerie + PJ -->
+          <form action="https://formsubmit.co/brehelin-e@saint-louis29.net" method="POST" enctype="multipart/form-data">
             <div class="grid-2">
               <div class="field">
                 <label for="prenom">Prénom *</label>
@@ -297,6 +296,7 @@
                 <input id="nom" name="Nom" required autocomplete="family-name" />
               </div>
             </div>
+
             <div class="grid-2">
               <div class="field">
                 <label for="email">Email *</label>
@@ -312,22 +312,30 @@
                 </select>
               </div>
             </div>
+
             <div class="field">
               <label for="message">Message *</label>
               <textarea id="message" name="Message" rows="5" required placeholder="Écrivez votre message ici..."></textarea>
             </div>
 
+            <!-- 📎 Pièce jointe (optionnelle) -->
+            <div class="field">
+              <label for="attachment">Pièce jointe (PDF, images, DOCX) — optionnel</label>
+              <input id="attachment" class="file-input" type="file" name="attachment" multiple
+                     accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.webp,.txt" />
+              <small class="muted">Taille conseillée &lt; 5&nbsp;Mo par fichier.</small>
+            </div>
+
             <!-- Champs cachés utiles -->
             <input type="hidden" name="_subject" value="Nouveau message via le portfolio" />
-            <!-- Redirection après envoi (tu peux créer /merci.html, sinon laisse tel quel) -->
-            <input type="hidden" name="_next" value="https://example.com/#contact" />
-            <!-- Empêche la page de FormSubmit d’afficher le récap -->
             <input type="hidden" name="_template" value="table" />
-            <!-- Anti-spam (honeypot) -->
-            <input type="text" name="_honey" style="display:none" />
             <input type="hidden" name="_captcha" value="false" />
+            <!-- Redirection après envoi (modifie si tu as une page /merci.html) -->
+            <input type="hidden" name="_next" value="https://ewen-brehelin.vercel.app/#contact" />
+            <!-- Anti-spam -->
+            <input type="text" name="_honey" style="display:none" />
 
-            <button class="btn" type="submit">Envoyer</button>
+            <button class="btn btn--primary" type="submit">Envoyer</button>
           </form>
 
           <div class="contact-alt" aria-label="Réseaux">
@@ -352,7 +360,7 @@
     </div>
   </footer>
 
-  <!-- Modales -->s
+  <!-- Modales -->
   <div id="cv-modal" class="modal" aria-hidden="true">
     <a href="#top" class="modal-overlay" aria-label="Fermer"></a>
     <div class="modal-card large" role="dialog" aria-modal="true" aria-labelledby="cv-title">

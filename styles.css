@@ -72,7 +72,7 @@ img,svg{max-width:100%; display:block}
 .icon-link{display:grid; place-items:center; width:36px; height:36px; border:1px solid var(--border); border-radius:12px; background:color-mix(in hsl, var(--panel-2) 85%, transparent)}
 .icon-link svg{width:20px; height:20px}
 
-/* Burger & drawer (identiques à avant) */
+/* Burger & drawer */
 .hamburger{ width:42px; height:42px; display:grid; place-items:center; border:1px solid var(--border); border-radius:12px; background:color-mix(in hsl, var(--panel-2) 85%, transparent); cursor:pointer; -webkit-tap-highlight-color:transparent; z-index:80 }
 .hamburger span{display:block; width:20px; height:2px; background:var(--text); border-radius:2px}
 .hamburger span+span{margin-top:4px}
@@ -118,10 +118,21 @@ html:has(#menu:target){overflow:hidden}
 .hero-highlights{list-style:none; margin:10px auto 0; padding:0; color:var(--muted); display:grid; gap:6px; font-size:14px; max-width:640px}
 .hero-highlights strong{ color:var(--text); font-weight:600 }
 .cta{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap; justify-content:center}
-.btn{display:inline-block; padding:12px 16px; border-radius:14px; border:1px solid var(--border); background:linear-gradient(180deg, color-mix(in hsl, var(--panel) 80%, transparent), color-mix(in hsl, var(--panel-2) 85%, transparent)); box-shadow:0 6px 18px rgba(0,0,0,.25)}
-.btn--primary{min-width:240px}
+
+/* ✅ Boutons lisibles */
+.btn{
+  display:inline-block; padding:12px 16px; border-radius:14px; border:1px solid var(--border);
+  background:linear-gradient(180deg, color-mix(in hsl, var(--panel) 80%, transparent), color-mix(in hsl, var(--panel-2) 85%, transparent));
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
+  color:var(--text); font-weight:600;
+}
+.btn--primary{
+  background:linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-color:transparent; color:#fff;  /* texte blanc bien visible */
+}
+.btn--primary:hover{ filter:saturate(1.05) brightness(1.05) }
+.btn.ghost{background:transparent; border-color:color-mix(in hsl, var(--accent) 60%, var(--border)); color:var(--accent)}
 .btn--ghost-full{min-width:240px}
-.btn.ghost{background:transparent}
 .cta-secondary{display:flex; gap:10px; margin-top:10px; flex-wrap:wrap; justify-content:center}
 .pill{display:inline-block; padding:8px 14px; border-radius:999px; border:1px solid var(--border); background:color-mix(in hsl, var(--panel-2) 85%, transparent); font-size:14px}
 
@@ -132,13 +143,14 @@ html:has(#menu:target){overflow:hidden}
   .cta, .cta-secondary{ justify-content:flex-start }
 }
 
-/* Sections, cartes, skills, timeline, formulaire, footer, modales — inchangé */
+/* Sections */
 .section{padding:64px 0; border-top:1px solid var(--border)}
 .section:first-of-type{border-top:0}
 .section-head{margin:0 0 18px}
 .section-head h2{margin:0 0 6px; font-size:24px; letter-spacing:.2px}
 .section-sub{margin:0; color:var(--muted); font-size:16px}
 
+/* Stages */
 .stages-grid{display:grid; gap:16px}
 @media (min-width: 860px){ .stages-grid{grid-template-columns:1fr 1fr} }
 .card{background:color-mix(in hsl, var(--panel) 85%, transparent); border:1px solid var(--border); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow)}
@@ -149,7 +161,7 @@ html:has(#menu:target){overflow:hidden}
 .stage .badge{ font-size:12px; color:var(--muted); border:1px solid var(--border); border-radius:999px; padding:3px 10px }
 @media (min-width:860px){ .center-desktop{ grid-column:1 / -1; justify-self:center; max-width:540px; width:100% }}
 
-/* compétences */
+/* Compétences & autres blocs */
 .skills{display:grid; gap:16px}
 @media (min-width: 860px){ .skills{grid-template-columns:repeat(3,1fr)} }
 .skill{background:linear-gradient(180deg, color-mix(in hsl, var(--panel) 85%, transparent), color-mix(in hsl, var(--panel-2) 92%, transparent)); border:1px solid var(--border); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow)}
@@ -163,11 +175,13 @@ html:has(#menu:target){overflow:hidden}
 .muted{color:var(--muted)}
 .row-icon{display:inline-flex; align-items:center; gap:8px}
 
+/* Timeline */
 .vtimeline{list-style:none; margin:0; padding:0; border-left:2px solid color-mix(in hsl, var(--border) 70%, transparent); padding-left:16px; display:grid; gap:18px}
 .vtimeline .dot{width:10px; height:10px; border-radius:50%; background:linear-gradient(135deg, var(--accent), var(--accent-2)); border:2px solid #0d0f15; position:relative; left:-22px; top:14px}
 .vtimeline time{font-size:14px; color:var(--muted)}
 .vt-card{background:color-mix(in hsl, var(--panel) 85%, transparent); border:1px solid var(--border); border-radius:12px; padding:12px; margin-top:6px}
 
+/* Formulaire & fichier */
 .contact form{display:grid; gap:12px}
 .grid-2{display:grid; grid-template-columns:1fr; gap:12px}
 @media (min-width:860px){ .grid-2{grid-template-columns:1fr 1fr} }
@@ -176,9 +190,20 @@ input, textarea, select{
   background:color-mix(in hsl, var(--panel) 85%, transparent); color:var(--text); outline:none; font-size:16px
 }
 input:focus, textarea:focus, select:focus{box-shadow:0 0 0 6px rgba(124,92,255,.08); border-color:color-mix(in hsl, var(--accent) 60%, var(--border))}
+
+/* Style du champ fichier */
+.file-input{
+  padding:10px 12px; border-radius:12px; border:1px solid var(--border);
+  background:color-mix(in hsl, var(--panel) 85%, transparent); color:var(--text);
+}
+.file-input::file-selector-button{
+  margin-right:10px; border:0; border-radius:10px; padding:8px 12px;
+  background:linear-gradient(90deg, var(--accent), var(--accent-2)); color:#fff; cursor:pointer;
+}
+
+/* Réseaux + footer */
 .contact-alt{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
 .contact-alt .ico{width:16px; height:16px}
-
 .site-footer{padding:26px 0 44px; border-top:1px solid var(--border); color:var(--muted); font-size:14px}
 .foot{display:flex; align-items:center; justify-content:space-between}
 .top{border:1px solid var(--border); border-radius:999px; padding:8px 12px; background:color-mix(in hsl, var(--panel-2) 85%, transparent)}
