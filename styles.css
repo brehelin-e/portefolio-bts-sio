@@ -2,13 +2,14 @@
   --bg:#0b0c10; --panel:#11131a; --panel-2:#0f1117;
   --text:#e9e9f2; --muted:#a6a8b3;
   --accent:#7c5cff; --accent-2:#00e0ff;
+  --green:#3aa364;
   --border:rgba(255,255,255,.08);
   --radius:16px; --shadow:0 12px 36px rgba(0,0,0,.4);
   --max:1000px;
 }
 *{box-sizing:border-box} html,body{height:100%}
 html{scroll-behavior:smooth}
-body{margin:0; font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; color:var(--text); background:var(--bg); line-height:1.6}
+body{margin:0; font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; color:var(--text); background:var(--bg); line-height:1.6; overflow-x:hidden}
 a{color:inherit; text-decoration:none} img,svg{max-width:100%; display:block}
 .wrap{max-width:var(--max); margin:0 auto; padding:0 16px}
 .bg{position:fixed; inset:0; z-index:-1; pointer-events:none;
@@ -23,12 +24,13 @@ a{color:inherit; text-decoration:none} img,svg{max-width:100%; display:block}
 /* Header */
 .site-header{position:sticky; top:0; background:color-mix(in hsl, var(--panel) 80%, transparent); border-bottom:1px solid var(--border); backdrop-filter:blur(8px); z-index:20}
 .nav{display:flex; align-items:center; justify-content:space-between; padding:12px 0}
-.brand{display:flex; align-items:center; gap:10px; font-weight:700}
+.brand{display:flex; align-items:center; gap:10px}
 .brand-avatar{width:28px; height:28px; border-radius:50%; object-fit:cover; border:1px solid var(--border)}
-.menu.desktop{display:none; gap:12px; align-items:center}
-.menu.desktop a{padding:8px 12px; border-radius:10px; border:1px solid transparent}
+.menu.desktop{display:none; gap:8px; align-items:center}
+.menu.desktop a{padding:8px 10px; border-radius:10px; border:1px solid transparent; font-size:14px}
 .menu.desktop a:hover{border-color:var(--border); background:color-mix(in hsl, var(--panel-2) 70%, transparent)}
-.icon-link{display:grid; place-items:center; width:38px; height:38px; border:1px solid var(--border); border-radius:12px; background:color-mix(in hsl, var(--panel-2) 85%, transparent)}
+.icon-link{display:grid; place-items:center; width:32px; height:32px; border:1px solid var(--border); border-radius:10px; background:color-mix(in hsl, var(--panel-2) 85%, transparent)}
+.icon-link svg{width:18px; height:18px}
 
 /* Hamburger */
 .hamburger{width:40px; height:40px; display:grid; place-items:center; border:1px solid var(--border); border-radius:12px; background:color-mix(in hsl, var(--panel-2) 85%, transparent); cursor:pointer}
@@ -37,16 +39,19 @@ a{color:inherit; text-decoration:none} img,svg{max-width:100%; display:block}
 
 /* Drawer mobile */
 .nav-toggle{position:absolute; opacity:0; pointer-events:none}
-.drawer{position:fixed; inset:0; z-index:30; display:block; pointer-events:none}
-.drawer .overlay{position:absolute; inset:0; background:rgba(0,0,0,.35); opacity:0; transition:opacity .2s}
-.drawer .drawer-head{position:absolute; top:0; left:0; right:0; height:56px; display:flex; align-items:center; justify-content:space-between; padding:0 14px}
+.drawer{position:fixed; inset:0; z-index:30; display:block; pointer-events:none; visibility:hidden}
+.drawer .overlay{position:absolute; inset:0; background:rgba(0,0,0,.45); opacity:0; transition:opacity .2s}
+.drawer .drawer-head{position:absolute; top:0; left:0; right:0; height:56px; display:flex; align-items:center; justify-content:space-between; padding:0 14px; opacity:0; transition:opacity .2s}
 .drawer .brand{display:flex; align-items:center; gap:10px}
 .drawer .brand .brand-avatar{width:28px; height:28px}
-.drawer .close{font-size:28px; width:44px; height:44px; display:grid; place-items:center; border:1px solid var(--border); border-radius:12px; background:color-mix(in hsl, var(--panel-2) 85%, transparent); cursor:pointer}
-.drawer .drawer-links{position:absolute; top:56px; bottom:0; left:0; width:78vw; max-width:320px; background:color-mix(in hsl, var(--panel) 95%, transparent); border-right:1px solid var(--border); transform:translateX(-100%); transition:transform .25s; padding:14px; display:flex; flex-direction:column; gap:8px; pointer-events:auto}
+.drawer .close{font-size:26px; width:40px; height:40px; display:grid; place-items:center; border:1px solid var(--border); border-radius:10px; background:color-mix(in hsl, var(--panel-2) 85%, transparent); cursor:pointer}
+.drawer .drawer-links{position:absolute; top:56px; bottom:0; left:0; width:78vw; max-width:320px; background:color-mix(in hsl, var(--panel) 95%, transparent); border-right:1px solid var(--border); transform:translateX(-110%); transition:transform .25s; padding:14px; display:flex; flex-direction:column; gap:8px; pointer-events:auto}
 .drawer .drawer-links a{padding:10px 12px; border-radius:10px; border:1px solid transparent}
 .drawer .drawer-links a:hover{border-color:var(--border); background:color-mix(in hsl, var(--panel-2) 75%, transparent)}
 .drawer .row-icon{display:flex; align-items:center; gap:10px}
+.drawer .row-icon svg{width:18px; height:18px}
+.nav-toggle:checked ~ .drawer{visibility:visible; pointer-events:auto}
+.nav-toggle:checked ~ .drawer .drawer-head{opacity:1}
 .nav-toggle:checked ~ .drawer .drawer-links{transform:none}
 .nav-toggle:checked ~ .drawer .overlay{opacity:1; pointer-events:auto}
 
@@ -54,22 +59,30 @@ a{color:inherit; text-decoration:none} img,svg{max-width:100%; display:block}
 .hero{padding:56px 0 28px}
 .hero-grid{display:grid; grid-template-columns:1fr; gap:16px}
 .kicker{color:var(--muted); font-size:14px; margin:0 0 6px}
-h1{font-size:clamp(28px, 7vw, 42px); margin:0 0 10px; line-height:1.15}
-.highlight{background:linear-gradient(90deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent}
+.title{font-size:clamp(28px, 7vw, 44px); margin:0 0 4px; line-height:1.15; background:linear-gradient(90deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent}
 .lead{color:var(--muted)}
 .cta{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
 .btn{display:inline-block; padding:10px 14px; border-radius:12px; border:1px solid var(--border); background:color-mix(in hsl, var(--panel) 85%, transparent)}
 .btn.ghost{background:transparent}
+.cta-secondary{display:flex; gap:10px; margin-top:10px; flex-wrap:wrap}
+.pill{display:inline-block; padding:8px 12px; border-radius:999px; border:1px solid var(--border); background:color-mix(in hsl, var(--panel-2) 85%, transparent); font-size:14px}
 .hero-media{display:grid; grid-template-columns:auto; gap:12px}
 .avatar{width:132px; height:132px; border-radius:50%; object-fit:cover; border:2px solid var(--border); box-shadow:var(--shadow)}
 .hero-art{border:1px solid var(--border); border-radius:16px; padding:8px; background:color-mix(in hsl, var(--panel-2) 85%, transparent)}
+
+/* Actions */
+.actions{display:flex; gap:18px; flex-wrap:wrap; align-items:center}
+.action{display:flex; align-items:center; gap:12px}
+.action .dot{width:56px; height:56px; border-radius:50%; background:var(--green); color:#0d0f15; display:grid; place-items:center; font-size:20px; font-weight:700}
+.action strong{color:var(--green)}
+.mobile-only{display:block}
 
 /* Sections */
 .section{padding:28px 0; border-top:1px solid var(--border)}
 .section h2{margin:0 0 14px; font-size:18px}
 .hint{margin:-4px 0 10px; color:var(--muted); font-size:13px}
 
-/* Projets horizontal */
+/* Projets: mobile carrousel, desktop grille */
 .hscroll{display:flex; gap:12px; overflow-x:auto; -webkit-overflow-scrolling:touch; scroll-snap-type:x mandatory; padding-bottom:6px}
 .hscroll.row-reverse{flex-direction:row-reverse}
 .card.snap{scroll-snap-align:center}
@@ -78,13 +91,22 @@ h1{font-size:clamp(28px, 7vw, 42px); margin:0 0 10px; line-height:1.15}
 .tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
 .tags span{border:1px solid var(--border); border-radius:999px; padding:4px 8px; font-size:12px; color:var(--muted)}
 
-/* Grilles & cartes */
+/* Compétences */
+.skills{display:grid; gap:14px}
+.skill{background:color-mix(in hsl, var(--panel) 85%, transparent); border:1px solid var(--border); border-radius:var(--radius); padding:14px; box-shadow:var(--shadow)}
+.skill .row{display:flex; align-items:center; justify-content:space-between; gap:10px}
+.chip{display:inline-block; padding:6px 10px; border:1px solid var(--border); border-radius:999px; background:color-mix(in hsl, var(--panel-2) 85%, transparent); font-size:12px; color:var(--muted)}
+.meter{height:8px; border-radius:999px; background:#10131a; border:1px solid var(--border); margin:8px 0 10px; overflow:hidden}
+.meter span{display:block; height:100%; width:var(--v); background:linear-gradient(90deg, var(--accent), var(--accent-2))}
+
+/* Grilles */
 .grid-2{display:grid; grid-template-columns:1fr; gap:14px}
 .grid-3{display:grid; grid-template-columns:1fr; gap:14px}
 .bullets{margin:0; padding-left:18px} .bullets li{margin:4px 0}
+.bullets.strong li{font-weight:600}
 .muted{color:var(--muted)}
 
-/* Timeline verticale Parcours */
+/* Timeline Parcours */
 .vtimeline{list-style:none; margin:0; padding:0; border-left:2px solid color-mix(in hsl, var(--border) 70%, transparent); padding-left:16px; display:grid; gap:16px}
 .vtimeline .dot{width:10px; height:10px; border-radius:50%; background:linear-gradient(135deg, var(--accent), var(--accent-2)); border:2px solid #0d0f15; position:relative; left:-22px; top:14px}
 .vtimeline time{font-size:13px; color:var(--muted)}
@@ -96,21 +118,36 @@ h1{font-size:clamp(28px, 7vw, 42px); margin:0 0 10px; line-height:1.15}
 input, textarea, select{width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); background:color-mix(in hsl, var(--panel) 85%, transparent); color:var(--text); outline:none}
 input:focus, textarea:focus, select:focus{box-shadow:0 0 0 6px rgba(124,92,255,.08); border-color:color-mix(in hsl, var(--accent) 60%, var(--border))}
 .contact-alt{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
-.chip{display:inline-block; padding:8px 10px; border:1px solid var(--border); border-radius:999px; background:color-mix(in hsl, var(--panel-2) 85%, transparent); font-size:14px}
+.contact-alt .ico{width:16px; height:16px}
+.row-icon{display:inline-flex; align-items:center; gap:8px}
 
 /* Footer */
 .site-footer{padding:24px 0 40px; border-top:1px solid var(--border); color:var(--muted); font-size:14px}
 .foot{display:flex; align-items:center; justify-content:space-between}
 .top{border:1px solid var(--border); border-radius:999px; padding:8px 12px; background:color-mix(in hsl, var(--panel-2) 85%, transparent)}
 
+/* Modale CSS-only */
+.modal{position:fixed; inset:0; z-index:40; display:none}
+.modal:target{display:block}
+.modal-overlay{position:absolute; inset:0; background:rgba(0,0,0,.55)}
+.modal-card{position:relative; margin:8vh auto; max-width:720px; background:#0f1117; border:1px solid var(--border); border-radius:16px; padding:16px}
+.modal-head{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px}
+.modal-close{display:grid; place-items:center; width:36px; height:36px; border:1px solid var(--border); border-radius:10px; background:color-mix(in hsl, var(--panel-2) 85%, transparent)}
+.btn.full{display:block; text-align:center; margin-top:10px}
+
 /* Desktop */
 @media (min-width: 860px){
   .menu.desktop{display:flex}
   .hamburger{display:none}
+  .drawer{display:none}
   .hero{padding:80px 0 40px}
   .hero-grid{grid-template-columns:1.1fr .9fr}
   .grid-2{grid-template-columns:1fr 1fr}
   .grid-3{grid-template-columns:repeat(3,1fr)}
   .avatar{width:160px; height:160px}
-  .card{min-width:420px}
+  .card{min-width:unset} /* pour la grille desktop */
+  .hscroll{overflow-x:visible; flex-wrap:wrap; gap:16px; scroll-snap-type:none; flex-direction:row}
+  .mobile-only{display:none}
+  .icon-link{width:36px; height:36px; border-radius:12px}
+  .icon-link svg{width:20px; height:20px}
 }

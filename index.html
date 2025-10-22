@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Ewen Bréhélin — Portfolio</title>
-  <meta name="description" content="Portfolio d'Ewen Bréhélin — administration systèmes & réseaux, développement web, support technique." />
+  <meta name="description" content="Portfolio d'Ewen Bréhélin — BTS SIO. Administration systèmes & réseaux, développement web, support technique." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -15,8 +15,7 @@
   <header class="site-header">
     <div class="wrap nav">
       <a class="brand" href="#top" aria-label="Accueil">
-        <img class="brand-avatar" src="./image/avatar.jpeg" alt="" />
-        <span class="brand-name">Ewen Bréhélin</span>
+        <img class="brand-avatar" src="avatar.jpg" alt="Avatar d’Ewen Bréhélin" />
       </a>
 
       <nav class="menu desktop">
@@ -39,7 +38,12 @@
     </div>
   </header>
 
-  <aside id="drawer" class="drawer">
+  <aside id="drawer" class="drawer" aria-hidden="true">
+    <div class="drawer-head">
+      <div class="brand">
+        <img class="brand-avatar" src="avatar.jpg" alt="" />
+        <span class="brand-name">Ewen Bréhélin</span>
+      </div>
       <label for="nav-toggle" class="close" aria-label="Fermer le menu">×</label>
     </div>
     <nav class="drawer-links">
@@ -62,18 +66,22 @@
   </aside>
 
   <main id="top" class="wrap">
+    <!-- Hero pro -->
     <section class="hero">
       <div class="hero-grid">
         <div class="hero-text">
-          <p class="kicker">Administration systèmes & réseaux • Développement web</p>
-          <h1>Salut, je suis <span class="highlight">Ewen Bréhélin</span>.</h1>
+          <p class="kicker">BTS SIO — Administration systèmes & réseaux • Développement web</p>
+          <h1 class="title">Ewen Bréhélin</h1>
           <p class="lead">
-            Étudiant en BTS SIO. Windows / Linux, réseau (VLAN, DHCP, DNS) et bases du dev (PHP, C#, HTML/CSS/JS, SQL).
-            Je conçois des solutions simples, fiables et jolies.
+            Étudiant en informatique, orienté fiabilité et clarté. Windows / Linux, réseau (VLAN, DHCP, DNS) et bases du dev (PHP, C#, HTML/CSS/JS, SQL).
           </p>
           <div class="cta">
             <a class="btn" href="#contact">Me contacter</a>
             <a class="btn ghost" href="#projets">Voir mes projets</a>
+          </div>
+          <div class="cta-secondary">
+            <a class="pill" href="#cv-modal">⬇︎ Télécharger mon CV</a>
+            <a class="pill" href="#cert-modal">⬤ Mes certifications</a>
           </div>
         </div>
         <div class="hero-media">
@@ -100,9 +108,22 @@
       </div>
     </section>
 
+    <!-- Actions (boutons ronds verts) -->
+    <section class="section actions">
+      <a class="action" href="#cv-modal">
+        <span class="dot">⬇︎</span>
+        <div><strong>Télécharger</strong><br/>mon CV</div>
+      </a>
+      <a class="action" href="#cert-modal">
+        <span class="dot">🏅</span>
+        <div><strong>Mes</strong><br/>Certifications</div>
+      </a>
+    </section>
+
+    <!-- Projets & Stages -->
     <section id="projets" class="section">
       <h2>Projets & Stages</h2>
-      <p class="hint">Glisse horizontalement. → Derniers à droite • Anciens à gauche.</p>
+      <p class="hint mobile-only">Astuce mobile : balayez horizontalement → les plus récents à droite.</p>
       <div class="hscroll row-reverse">
         <article class="card snap">
           <div class="badge">2025</div>
@@ -137,11 +158,15 @@
       </div>
     </section>
 
+    <!-- Compétences -->
     <section id="competences" class="section">
       <h2>Compétences</h2>
-      <div class="grid-3">
-        <div class="card">
-          <h3>Réseaux & Systèmes</h3>
+      <div class="skills">
+        <div class="skill">
+          <div class="row">
+            <h3>Réseaux & Systèmes</h3><span class="chip">Infra</span>
+          </div>
+          <div class="meter"><span style="--v:75%"></span></div>
           <ul class="bullets">
             <li>Windows / Linux (bases d’admin)</li>
             <li>VLAN, DHCP, DNS</li>
@@ -149,16 +174,22 @@
             <li>Supervision (Centreon, notions)</li>
           </ul>
         </div>
-        <div class="card">
-          <h3>Développement</h3>
+        <div class="skill">
+          <div class="row">
+            <h3>Développement</h3><span class="chip">Web</span>
+          </div>
+          <div class="meter"><span style="--v:65%"></span></div>
           <ul class="bullets">
             <li>PHP, C#, HTML, CSS, JavaScript</li>
             <li>SQL / MySQL</li>
             <li>Sémantique, accessibilité (bases)</li>
           </ul>
         </div>
-        <div class="card">
-          <h3>Support</h3>
+        <div class="skill">
+          <div class="row">
+            <h3>Support</h3><span class="chip">Helpdesk</span>
+          </div>
+          <div class="meter"><span style="--v:80%"></span></div>
           <ul class="bullets">
             <li>Assistance utilisateurs</li>
             <li>Installation matérielle & logicielle</li>
@@ -168,12 +199,15 @@
       </div>
     </section>
 
+    <!-- À propos -->
     <section id="apropos" class="section">
       <h2>À propos</h2>
       <div class="grid-2">
         <div class="card">
-          <p>Basé à Pluguffan (Finistère). À l’aise en support utilisateur, installation matérielle/logicielle
-            et documentation. Curieux, rigoureux et motivé.</p>
+          <p>
+            Basé à Pluguffan (Finistère). À l’aise en support utilisateur, installation matérielle/logicielle
+            et documentation. Curieux, rigoureux et motivé.
+          </p>
         </div>
         <div class="card">
           <ul class="bullets">
@@ -185,28 +219,30 @@
       </div>
     </section>
 
+    <!-- Parcours scolaire (demandes spécifiques) -->
     <section id="parcours" class="section">
       <h2>Parcours scolaire</h2>
       <ol class="vtimeline">
         <li>
           <div class="dot"></div>
-          <time>2024 — 2026</time>
+          <time>2025</time>
           <div class="vt-card">
             <h3>BTS SIO</h3>
-            <p class="muted">Lycée Saint‑Louis, Châteaulin — en cours</p>
+            <p class="muted">Lycée Saint‑Louis, Châteaulin</p>
           </div>
         </li>
         <li>
           <div class="dot"></div>
-          <time>2022</time>
+          <time>2022 — 2025</time>
           <div class="vt-card">
-            <h3>Baccalauréat Systèmes Numériques</h3>
-            <p class="muted">Obtenu</p>
+            <h3>Baccalauréat Systèmes Numériques — option RISC</h3>
+            <p class="muted">Lycée La Salle, Quimper</p>
           </div>
         </li>
       </ol>
     </section>
 
+    <!-- Contact -->
     <section id="contact" class="section">
       <h2>Contact</h2>
       <div class="card contact">
@@ -221,7 +257,6 @@
               <input id="nom" name="Nom" required autocomplete="family-name" />
             </div>
           </div>
-
           <div class="grid-2">
             <div class="field">
               <label for="email">Email *</label>
@@ -237,20 +272,22 @@
               </select>
             </div>
           </div>
-
           <div class="field">
             <label for="message">Message *</label>
             <textarea id="message" name="Message" rows="5" required placeholder="Écrivez votre message ici..."></textarea>
           </div>
-
           <button class="btn" type="submit">Envoyer</button>
         </form>
 
         <div class="contact-alt">
-          <a class="chip" href="mailto:brehelin-e@saint-louis29.net">📧 Email</a>
-          <a class="chip" href="tel:+33772720438">📞 07 72 72 04 38</a>
-          <a class="chip" href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHBR7RTIkiM3QAAAZoMC0bo3twN-2MJ5kPlF2PrqUYC-mSToTTqY22o-KTwTbTJ_10jNlqq1MI3y_kJLCtNArzGNlYJdrWshKLMPUAo74XUFd7VB5BH1HffrMcEsok0AqA-kTg=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fewen-br%25C3%25A9h%25C3%25A9lin-63305a307%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dios_app" target="_blank" rel="noopener">💼 LinkedIn</a>
-          <a class="chip" href="https://github.com/brehelin-e" target="_blank" rel="noopener">🐙 GitHub</a>
+          <a class="chip row-icon" href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHBR7RTIkiM3QAAAZoMC0bo3twN-2MJ5kPlF2PrqUYC-mSToTTqY22o-KTwTbTJ_10jNlqq1MI3y_kJLCtNArzGNlYJdrWshKLMPUAo74XUFd7VB5BH1HffrMcEsok0AqA-kTg=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fewen-br%25C3%25A9h%25C3%25A9lin-63305a307%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dios_app" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zm7.5 0h3.8v1.98h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V23h-4v-6.46c0-1.54-.03-3.52-2.15-3.52-2.15 0-2.48 1.67-2.48 3.4V23h-4V8.5z"/></svg>
+            LinkedIn
+          </a>
+          <a class="chip row-icon" href="https://github.com/brehelin-e" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path fill="currentColor" d="M12 .5a12 12 0 0 0-3.79 23.4c.6.1.82-.26.82-.57v-2.1c-3.34.73-4.04-1.6-4.04-1.6-.55-1.38-1.34-1.75-1.34-1.75-1.1-.76.08-.74.08-.74 1.22.09 1.86 1.25 1.86 1.25 1.08 1.85 2.83 1.32 3.52 1 .1-.8.42-1.33.76-1.64-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.5.12-3.12 0 0 1-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.62.24 2.82.12 3.12.77.84 1.24 1.9 1.24 3.22 0 4.61-2.8 5.62-5.47 5.92.43.38.82 1.12.82 2.26v3.35c0 .31.22.67.83.56A12 12 0 0 0 12 .5Z"/></svg>
+            GitHub
+          </a>
         </div>
       </div>
     </section>
@@ -262,5 +299,38 @@
       <a class="top" href="#top">↑ Haut de page</a>
     </div>
   </footer>
+
+  <!-- Modales (CSS-only via :target) -->
+  <div id="cv-modal" class="modal" aria-hidden="true">
+    <a href="#" class="modal-overlay" aria-label="Fermer"></a>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="cv-title">
+      <div class="modal-head">
+        <h3 id="cv-title">Télécharger mon CV</h3>
+        <a class="modal-close" href="#" aria-label="Fermer">×</a>
+      </div>
+      <p>Place ton fichier <code>cv.pdf</code> dans le même dossier que ce site.</p>
+      <a class="btn full" href="cv.pdf" download>⬇︎ Télécharger le CV (PDF)</a>
+    </div>
+  </div>
+
+  <div id="cert-modal" class="modal" aria-hidden="true">
+    <a href="#" class="modal-overlay" aria-label="Fermer"></a>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="cert-title">
+      <div class="modal-head">
+        <h3 id="cert-title">Mes Certifications</h3>
+        <a class="modal-close" href="#" aria-label="Fermer">×</a>
+      </div>
+      <ul class="bullets strong">
+        <li>Atelier RGPD — CNIL</li>
+        <li>SecNum académie — ANSSI</li>
+        <li>Cybersecurity Essentials — Cisco</li>
+        <li>Analyse de données Python (Numpy/Pandas/Matplotlib) — Udemy</li>
+        <li>SEO de base — Udemy</li>
+        <li>MySQL pour débutants — Udemy</li>
+        <li>AutoCAD 2023 — Udemy</li>
+      </ul>
+      <p class="muted">Objectif : consolider les fondamentaux (réseaux, sécurité, bases de données, bonnes pratiques).</p>
+    </div>
+  </div>
 </body>
 </html>
