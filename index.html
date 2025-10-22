@@ -79,27 +79,27 @@
             <img class="avatar" src="./image/avatar.jpeg" alt="Photo de profil d’Ewen Bréhélin" width="220" height="220" />
           </div>
 
-          <div class="hero-text">
-            <p class="kicker">BTS SIO — Admin Systèmes & Réseaux • Dev Web</p>
-            <h1 class="title">Ewen Bréhélin</h1>
-            <p class="lead">Alternant motivé, à l’aise en support, intégration et bases d’admin systèmes & réseaux.</p>
+        <div class="hero-text">
+          <p class="kicker">BTS SIO — Admin Systèmes & Réseaux • Dev Web</p>
+          <h1 class="title">Ewen Bréhélin</h1>
+          <p class="lead">Alternant motivé, à l’aise en support, intégration et bases d’admin systèmes & réseaux.</p>
 
-            <ul class="hero-highlights">
-              <li><strong>Sys/Réseau :</strong> Windows, Linux, VLAN, DHCP, DNS</li>
-              <li><strong>Dev :</strong> PHP, C#, HTML/CSS/JS, SQL</li>
-              <li><strong>Soft skills :</strong> rigueur, doc claire, support</li>
-            </ul>
+          <ul class="hero-highlights">
+            <li><strong>Sys/Réseau :</strong> Windows, Linux, VLAN, DHCP, DNS</li>
+            <li><strong>Dev :</strong> PHP, C#, HTML/CSS/JS, SQL</li>
+            <li><strong>Soft skills :</strong> rigueur, doc claire, support</li>
+          </ul>
 
-            <div class="cta cta--stack-mobile">
-              <a class="btn btn--primary" href="#contact">Me contacter</a>
-              <a class="btn ghost btn--ghost-full" href="#stages">Voir mes stages</a>
-            </div>
-
-            <div class="cta-secondary">
-              <a class="pill" href="#cv-modal">⬇︎ Télécharger mon CV</a>
-              <a class="pill" href="#cert-modal">🏅 Mes certifications</a>
-            </div>
+          <div class="cta cta--stack-mobile">
+            <a class="btn btn--primary" href="#contact">Me contacter</a>
+            <a class="btn ghost btn--ghost-full" href="#stages">Voir mes stages</a>
           </div>
+
+          <div class="cta-secondary">
+            <a class="pill" href="#cv-modal">⬇︎ Télécharger mon CV</a>
+            <a class="pill" href="#cert-modal">🏅 Mes certifications</a>
+          </div>
+        </div>
         </div>
       </div>
     </section>
@@ -113,6 +113,7 @@
         </header>
 
         <div class="stages-grid">
+          <!-- DARTY -->
           <article class="stage card">
             <div class="stage-head">
               <img class="logo" src="./logos/darty.png" width="56" height="56" loading="lazy" decoding="async" alt="Logo DARTY" />
@@ -129,6 +130,7 @@
             </ul>
           </article>
 
+          <!-- CD29 -->
           <article class="stage card">
             <div class="stage-head">
               <img class="logo" src="./logos/cd29.png" width="56" height="56" loading="lazy" decoding="async" alt="Logo Conseil Départemental 29" />
@@ -145,6 +147,7 @@
             </ul>
           </article>
 
+          <!-- SAVE -->
           <article class="stage card">
             <div class="stage-head">
               <img class="logo" src="./logos/save.png" width="56" height="56" loading="lazy" decoding="async" alt="Logo SAVE" />
@@ -161,7 +164,24 @@
             </ul>
           </article>
 
-          <!-- centré en desktop -->
+          <!-- ✅ PELIK356 (réintégré) -->
+          <article class="stage card">
+            <div class="stage-head">
+              <img class="logo" src="./logos/pelik356.png" width="56" height="56" loading="lazy" decoding="async" alt="Logo Pelik356" />
+              <div class="meta">
+                <h3>Pelik356 — Web & SEO</h3>
+                <span class="badge">Durée : xx semaines</span>
+              </div>
+            </div>
+            <ul class="bullets">
+              <li>Mises à jour de contenus & micro-intégrations HTML/CSS.</li>
+              <li>Initiation SEO : balises, métadonnées, perfs de base.</li>
+              <li>Tests multi-écrans, retours QA.</li>
+              <li>Mini comptes-rendus d’avancement.</li>
+            </ul>
+          </article>
+
+          <!-- Terre de l’Ouest (centré desktop) -->
           <article class="stage card center-desktop">
             <div class="stage-head">
               <img class="logo" src="./logos/tdo.png" width="56" height="56" loading="lazy" decoding="async" alt="Logo Terre de l’Ouest" />
@@ -284,7 +304,7 @@
         </header>
 
         <div class="card contact">
-          <!-- ✅ FormSubmit : envoi sans ouvrir la messagerie + PJ -->
+          <!-- FormSubmit : envoi sans ouvrir la messagerie + PJ -->
           <form action="https://formsubmit.co/brehelin-e@saint-louis29.net" method="POST" enctype="multipart/form-data">
             <div class="grid-2">
               <div class="field">
@@ -318,7 +338,7 @@
               <textarea id="message" name="Message" rows="5" required placeholder="Écrivez votre message ici..."></textarea>
             </div>
 
-            <!-- 📎 Pièce jointe (optionnelle) -->
+            <!-- Pièce jointe -->
             <div class="field">
               <label for="attachment">Pièce jointe (PDF, images, DOCX) — optionnel</label>
               <input id="attachment" class="file-input" type="file" name="attachment" multiple
@@ -326,13 +346,11 @@
               <small class="muted">Taille conseillée &lt; 5&nbsp;Mo par fichier.</small>
             </div>
 
-            <!-- Champs cachés utiles -->
+            <!-- Champs cachés -->
             <input type="hidden" name="_subject" value="Nouveau message via le portfolio" />
             <input type="hidden" name="_template" value="table" />
             <input type="hidden" name="_captcha" value="false" />
-            <!-- Redirection après envoi (modifie si tu as une page /merci.html) -->
-            <input type="hidden" name="_next" value="https://ewen-brehelin.vercel.app/#contact" />
-            <!-- Anti-spam -->
+            <input type="hidden" name="_next" value="https://example.com/#contact" />
             <input type="text" name="_honey" style="display:none" />
 
             <button class="btn btn--primary" type="submit">Envoyer</button>
