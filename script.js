@@ -29,7 +29,21 @@ drawerLinks.forEach(link => link.addEventListener('click', closeMenu));
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     const href = this.getAttribute('href');
-    if (href !== '#!' && href.length > 1 && !href.includes('-modal')) {
+    
+    // Si c'est un lien vers une modale, ouvrir la modale
+    if (href.includes('projet-') || href.includes('-modal')) {
+      e.preventDefault();
+      const modalId = href.substring(1);
+      const modal = document.getElementById(modalId);
+      if (modal && modal.classList.contains('modal')) {
+        modal.style.display = 'flex';
+        window.location.hash = href;
+      }
+      return;
+    }
+    
+    // Sinon, smooth scroll normal
+    if (href !== '#!' && href.length > 1) {
       e.preventDefault();
       const target = document.querySelector(href);
       if (target) {
@@ -52,6 +66,33 @@ function closeModal(modalId) {
     window.location.hash = '';
   }
 }
+
+// Gérer les clics sur les backdrops de toutes les modales
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.modal-backdrop').forEach(backdrop => {
+    backdrop.addEventListener('click', function(e) {
+      if (e.target === this) {
+        const modal = this.closest('.modal');
+        if (modal) {
+          modal.style.display = 'none';
+          window.location.hash = '';
+        }
+      }
+    });
+  });
+  
+  // Fermer les modales avec la touche Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal').forEach(modal => {
+        if (modal.style.display === 'flex') {
+          modal.style.display = 'none';
+          window.location.hash = '';
+        }
+      });
+    }
+  });
+});
 
 // Open modal from hash
 if (window.location.hash) {

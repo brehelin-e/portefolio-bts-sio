@@ -247,14 +247,14 @@ ul, ol {
   color: var(--text-gray);
 }
 
-.menu.desktop {
+.desktop-nav {
   display: none;
   align-items: center;
   gap: 0.5rem;
 }
 
 @media (min-width: 768px) {
-  .menu.desktop {
+  .desktop-nav {
     display: flex !important;
   }
   
