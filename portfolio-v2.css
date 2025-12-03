@@ -327,7 +327,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   :root{--sidebar-width:0}
   .sidebar{display:none;} /* Masquage définitif du menu latéral desktop */
   .mobile-menu-btn{display:flex}
-  .mobile-drawer{display:block; left: -280px;} 
+  .mobile-drawer{display:block; left: -280px;} /* Initialement masqué */
   .mobile-drawer.open{left:0}
   .mobile-overlay{display:block}
   .main-content{margin-left:0}
@@ -341,21 +341,26 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   .about-photo{
       width:200px;
       height:200px;
-      margin:0 auto 0; /* Réinitialisation de la marge auto */
+      margin:0 auto; /* Centrage */
       z-index: 1; 
   }
   .about-grid{
-      gap: var(--spacing-lg); /* Réduire l'espace de la grille */
+      gap: var(--spacing-lg); 
+      /* Augmenter la distance entre photo et contenu */
+      grid-gap: 2rem; 
+      padding-top: 1rem;
   }
   .about-content{
     text-align: center; 
-    margin-top: 1rem; /* Marge pour forcer la séparation d'avec la photo */
+    margin-top: 0; /* Pas de marge négative */
     display: flex; 
     flex-direction: column;
     align-items: center;
+    /* Marge entre la photo et le titre */
+    gap: 1.5rem; 
   }
   .about-title {
-      margin-top: 0; 
+      margin-top: 0; /* Assurer que le titre ne remonte pas */
   }
   
   .about-grid{grid-template-columns:1fr}
@@ -367,10 +372,9 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
     left: 0;
     bottom: 0;
     width: 100%;
-    /* Positionnement relatif ou fixe/absolute pour la fenêtre seulement */
   }
   .chatbot-window{
-    position: fixed; /* Ancrage fort en bas/largeur */
+    position: fixed; 
     width: 100%;
     max-width: 100%;
     right: 0;
@@ -379,10 +383,12 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
     height: 70vh;
     border-radius: 16px 16px 0 0;
   }
+  /* Correction du bouton flottant pour qu'il ne cause pas de débordement */
   .chatbot-button{
     right: 1rem;
     left: auto;
     bottom: 1rem;
+    position: fixed; 
   }
   .chatbot-messages {
     padding-right: 0.5rem; 
