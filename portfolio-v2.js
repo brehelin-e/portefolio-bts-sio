@@ -1,5 +1,5 @@
 /* =================================================================
-   PORTFOLIO V2 - JAVASCRIPT
+   PORTFOLIO V2 - JAVASCRIPT (Connecté à l'API Gemini via /api/chat)
    Animations, particules, navigation, modales
    ================================================================= */
 
@@ -338,7 +338,7 @@ function initScrollIndicator() {
 }
 
 // ===============================================
-// 7. ANIMATIONS BARRES DE COMPÉTENCES (Non utilisé en V2)
+// 7. ANIMATIONS BARRES DE COMPÉTENCES
 // ===============================================
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -385,7 +385,6 @@ const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
   contactForm.addEventListener('submit', (e) => {
     // Le formulaire utilise FormSubmit, pas besoin de preventDefault
-    // Mais on peut ajouter une validation custom ici si besoin
     console.log('Formulaire envoyé avec succès !');
   });
 }
@@ -420,125 +419,122 @@ console.log('%cDéveloppé avec passion ❤️', 'color: #8b5cf6; font-size: 14p
 console.log('%cContact: brehelin-e@saint-louis29.net', 'color: #06b6d4; font-size: 12px;');
 
 // ===============================================
-// 12. CHATBOT IA
+// 12. CHATBOT IA (Version connectée à l'API Gemini)
 // ===============================================
-function initChatbot() {
-  const toggle = document.getElementById('chatbot-toggle');
-  const window = document.getElementById('chatbot-window');
-  const close = document.getElementById('chatbot-close');
-  const input = document.getElementById('chatbot-input');
-  const sendBtn = document.getElementById('chatbot-send');
-  const messagesContainer = document.getElementById('chatbot-messages');
-  const suggestions = document.querySelectorAll('.suggestion-chip');
 
-  if (!toggle || !window) return;
+// Base de connaissances statique servant de FALLBACK si l'API échoue
+const knowledge = {
+    'fallback': 'Je ne suis pas sûr de comprendre. Veuillez reformuler votre question ou essayer l\'une des suggestions ci-dessus !',
+};
 
-  // Ouvrir/Fermer chatbot
-  toggle.addEventListener('click', () => {
-    window.classList.toggle('open');
-  });
+// Fonction pour appeler le proxy Serverless (/api/chat)
+async function getApiResponse(question) {
+    try {
+        const response = await fetch('/api/chat', { 
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ question }),
+        });
 
-  close.addEventListener('click', () => {
-    window.classList.remove('open');
-  });
+        if (!response.ok) {
+            console.error(`Erreur du proxy Serverless: ${response.status}`);
+            return knowledge.fallback;
+        }
 
-  // Base de connaissances
-  const knowledge = {
-    'compétences': 'Je maîtrise Windows Server, Linux, les réseaux (VLAN, DHCP, DNS), le développement web (HTML/CSS/JS, PHP/MySQL), et PowerShell. J\'ai une certification PIX et une expertise en administration système.',
-    'projets': 'J\'ai réalisé 4 projets majeurs : installation d\'un serveur Centreon pour la supervision IT, optimisation SEO (score 51→100/100), déploiement de 200 PC pour le CD29, et réparations smartphones avancées.',
-    'parcours': 'Je suis en BTS SIO option SISR au Lycée Saint-Louis de Châteaulin. J\'ai effectué 5 stages professionnels chez DARTY, le Conseil Départemental 29, SAVE, Pelik356, et Terres de l\'Ouest.',
-    'contact': 'Vous pouvez me contacter par email à brehelin-e@saint-louis29.net, par téléphone au 07 72 72 04 38, ou via le formulaire de contact sur cette page.',
-    'centreon': 'J\'ai installé et configuré Centreon 24.10 sur Debian 12 pour superviser serveurs, routeurs, switchs et Wi-Fi. Configuration SNMP, alertes automatiques, et vues personnalisées.',
-    'seo': 'J\'ai réalisé un audit SEO complet d\'un blog immobilier : le score est passé de 51/100 à 100/100. Correction de 1750 URLs, optimisation images, restructuration balisage.',
-    'cd29': 'J\'ai configuré 200 ordinateurs Thinkpad T480 pour le Conseil Départemental : installation réseau PXE, masters Windows 10 personnalisés, tests validation complets.',
-    'formation': 'BTS SIO (Services Informatiques aux Organisations) option SISR (Solutions d\'Infrastructure, Systèmes et Réseaux) au Lycée Saint-Louis de Châteaulin.',
-    'certification': 'J\'ai obtenu la certification PIX qui valide mes compétences numériques au niveau expert.',
-    'disponibilité': 'Je suis actuellement disponible pour un stage. N\'hésitez pas à me contacter pour discuter de vos besoins !',
-    'cv': 'Vous pouvez télécharger mon CV en cliquant sur le bouton "Télécharger mon CV" en haut de la page ou dans la section contact.',
-    'linkedin': 'Retrouvez-moi sur LinkedIn : linkedin.com/in/ewen-bréhélin-63305a307',
-    'github': 'Mon profil GitHub : github.com/brehelin-e'
-  };
+        const data = await response.json();
+        return data.answer || knowledge.fallback;
 
-  // Fonction pour obtenir une réponse
-  function getResponse(question) {
-    question = question.toLowerCase();
-
-    // Correspondances exactes
-    for (const [key, value] of Object.entries(knowledge)) {
-      if (question.includes(key)) {
-        return value;
-      }
+    } catch (error) {
+        console.error("Erreur réseau ou Fetch:", error);
+        return 'Erreur réseau. Je ne peux pas contacter l\'IA. Veuillez réessayer.';
     }
+}
 
-    // Mots-clés alternatifs
-    if (question.includes('skills') || question.includes('savoir')) return knowledge.compétences;
-    if (question.includes('project') || question.includes('réalisation')) return knowledge.projets;
-    if (question.includes('étude') || question.includes('école')) return knowledge.formation;
-    if (question.includes('mail') || question.includes('téléphone') || question.includes('joindre')) return knowledge.contact;
-    if (question.includes('stage') || question.includes('alternance') || question.includes('emploi')) return knowledge.disponibilité;
-
-    // Réponse par défaut
-    return 'Je ne suis pas sûr de comprendre. Essayez de me poser une question sur les compétences, les projets, le parcours ou les coordonnées d\'Ewen. Vous pouvez aussi utiliser les suggestions ci-dessus ! 😊';
-  }
-
-  // Ajouter un message
-  function addMessage(text, isBot = true) {
+// Fonction utilitaire pour ajouter des messages
+function addMessage(text, isBot = true) {
+    const messagesContainer = document.getElementById('chatbot-messages');
     const message = document.createElement('div');
     message.className = `chat-message ${isBot ? 'bot' : 'user'}`;
     message.textContent = text;
     messagesContainer.appendChild(message);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
-  }
+}
 
-  // Afficher l'animation typing
-  function showTyping() {
+// Fonction utilitaire pour l'indicateur de frappe
+function showTyping() {
+    const messagesContainer = document.getElementById('chatbot-messages');
     const typing = document.createElement('div');
     typing.className = 'chat-typing';
     typing.id = 'typing-indicator';
     typing.innerHTML = '<span></span><span></span><span></span>';
     messagesContainer.appendChild(typing);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
-  }
+}
 
-  // Retirer l'animation typing
-  function hideTyping() {
+// Fonction utilitaire pour masquer l'indicateur de frappe
+function hideTyping() {
     const typing = document.getElementById('typing-indicator');
     if (typing) typing.remove();
-  }
+}
 
-  // Envoyer un message
-  function sendMessage() {
+// Fonction principale pour envoyer le message (maintenant async pour l'API)
+async function sendMessage() {
+    const input = document.getElementById('chatbot-input');
     const question = input.value.trim();
     if (!question) return;
 
-    // Afficher la question de l'utilisateur
+    // 1. Afficher la question de l'utilisateur
     addMessage(question, false);
     input.value = '';
 
-    // Simuler un délai de réponse
+    // 2. Afficher l'indicateur de frappe
     showTyping();
-    setTimeout(() => {
-      hideTyping();
-      const response = getResponse(question);
-      addMessage(response, true);
-    }, 1000 + Math.random() * 1000);
-  }
+    
+    // 3. Appel asynchrone à l'API
+    const responseText = await getApiResponse(question); 
 
-  // Event listeners
-  sendBtn.addEventListener('click', sendMessage);
-  input.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') sendMessage();
-  });
-
-  // Suggestions cliquables
-  suggestions.forEach(chip => {
-    chip.addEventListener('click', () => {
-      const question = chip.dataset.question;
-      input.value = question;
-      sendMessage();
-    });
-  });
+    // 4. Masquer l'indicateur et afficher la réponse
+    hideTyping();
+    addMessage(responseText, true);
 }
 
-// Initialiser le chatbot
+
+function initChatbot() {
+    const toggle = document.getElementById('chatbot-toggle');
+    const window = document.getElementById('chatbot-window');
+    const close = document.getElementById('chatbot-close');
+    const input = document.getElementById('chatbot-input');
+    const sendBtn = document.getElementById('chatbot-send');
+    const suggestions = document.querySelectorAll('.suggestion-chip');
+
+    if (!toggle || !window) return;
+
+    // Événements d'ouverture/fermeture
+    toggle.addEventListener('click', () => {
+        window.classList.toggle('open');
+    });
+
+    close.addEventListener('click', () => {
+        window.classList.remove('open');
+    });
+
+    // Event listeners pour l'envoi de message
+    sendBtn.addEventListener('click', sendMessage);
+    input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessage();
+    });
+
+    // Suggestions cliquables
+    suggestions.forEach(chip => {
+        chip.addEventListener('click', () => {
+            const question = chip.dataset.question;
+            input.value = question;
+            sendMessage(); 
+        });
+    });
+}
+
+// Initialiser le chatbot au chargement du DOM
 document.addEventListener('DOMContentLoaded', initChatbot);

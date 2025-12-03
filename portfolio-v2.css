@@ -207,8 +207,6 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 .project-title{font-family:'Space Grotesk',sans-serif;font-size:1.375rem;font-weight:600;color:var(--text-dark);margin-bottom:var(--spacing-md);line-height:1.3}
 .project-description{font-size:0.9375rem;color:var(--text-gray);line-height:1.6;margin-bottom:var(--spacing-lg)}
 
-.project-meta{display:flex;flex-wrap:wrap;gap:var(--spacing-md);padding-top:var(--spacing-md);border-top:1px solid rgba(0,0,0,0.05);font-size:0.875rem;color:var(--text-light);margin-bottom:var(--spacing-lg)}
-
 .project-actions{display:flex;gap:var(--spacing-sm)}
 .btn-project{display:inline-flex;align-items:center;gap:var(--spacing-sm);padding:0.625rem 1.25rem;border-radius:var(--radius);font-size:0.9375rem;font-weight:500;text-decoration:none;transition:var(--transition)}
 .btn-primary-project{background:linear-gradient(135deg,#6366F1,#4F46E5);color:var(--text-white)}
@@ -341,22 +339,21 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   .about-photo{
       width:200px;
       height:200px;
-      margin:0 auto; /* Centrage */
+      margin: 0 auto 1.5rem; /* Réduire la marge inférieure pour un look plus compact, mais suffisant */
       z-index: 1; 
   }
   .about-grid{
-      gap: 0; /* Réduire l'espace de la grille */
+      gap: 0; 
       grid-gap: 0; 
       padding-top: 1rem;
   }
   .about-content{
     text-align: center; 
-    /* Augmenter l'espace au-dessus du contenu pour le pousser sous la photo */
-    margin-top: 3rem; 
+    margin-top: 0; /* Ne pas utiliser de marge supérieure négative/positive */
     display: flex; 
     flex-direction: column;
     align-items: center;
-    gap: var(--spacing-lg); /* Espace normal entre les éléments de texte */
+    gap: var(--spacing-lg); 
   }
   .about-title {
       margin-top: 0; 
@@ -367,28 +364,31 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   
   /* Correction Chatbot Mobile - Ancrage fort */
   .chatbot-container{
-    right: 0;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    margin: 0; /* Supprimer toute marge résiduelle */
+    right: 1rem; /* Ancrage à 1rem du bord droit */
+    bottom: 1rem;
+    width: auto; /* La largeur sera définie par la fenêtre */
+    max-width: calc(100% - 2rem); /* Contrainte maximale pour éviter le débordement */
+    margin: 0; 
+    position: fixed;
+    z-index: 9998;
   }
   .chatbot-window{
-    position: fixed; 
-    width: 100%;
-    max-width: 100%;
-    right: 0;
-    left: 0;
-    bottom: 0;
+    position: fixed; /* Fixer la fenêtre en bas */
+    width: calc(100% - 2rem);
+    max-width: 360px; /* Conserver la largeur maximale desktop si l'écran est grand */
+    right: 1rem;
+    left: auto; /* Ancrer à droite */
+    bottom: 80px;
     height: 70vh;
     border-radius: 16px 16px 0 0;
   }
-  /* Correction du bouton flottant pour qu'il ne cause pas de débordement */
+  /* Le bouton doit être positionné par rapport au viewport */
   .chatbot-button{
     right: 1rem;
     left: auto;
     bottom: 1rem;
     position: fixed; 
+    z-index: 9999;
   }
   .chatbot-messages {
     padding-right: 0.5rem; 
@@ -420,6 +420,26 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   }
   .hero-cta .btn{
     padding: 0.75rem 1.5rem;
+  }
+  
+  /* Correction ultime pour les petits écrans: le chatbot prend toute la largeur */
+  .chatbot-container{
+    right: 0; 
+    left: 0;
+    max-width: 100%;
+    bottom: 0;
+    width: 100%;
+  }
+  .chatbot-window {
+    width: 100%;
+    right: 0;
+    left: 0; 
+  }
+  /* Le bouton reste fixe à droite pour ne pas être écrasé */
+  .chatbot-button{
+    right: 1rem;
+    left: auto;
+    bottom: 1rem;
   }
 }
 
