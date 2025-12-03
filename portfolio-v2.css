@@ -214,7 +214,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 
 /* ===== COMPÉTENCES ===== */
 .skills-section{background:var(--bg-light)}
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--spacing-2xl)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:var(--spacing-2xl)}
 
 .skill-category{background:var(--bg-white);padding:var(--spacing-xl);border-radius:var(--radius-xl);box-shadow:var(--shadow);transition:var(--transition)}
 .skill-category:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px)}
@@ -323,7 +323,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 
 @media (max-width:768px){
   :root{--sidebar-width:0}
-  .sidebar{display:none;} /* Masquage définitif du menu latéral desktop */
+  .sidebar{display:none;} 
   .mobile-menu-btn{display:flex}
   .mobile-drawer{display:block; left: -280px;} 
   .mobile-drawer.open{left:0}
@@ -339,7 +339,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   .about-photo{
       width:200px;
       height:200px;
-      margin: 0 auto 1.5rem; /* Réduire la marge inférieure pour un look plus compact, mais suffisant */
+      margin: 0 auto 1.5rem; /* Marge en bas de la photo pour espacer du titre */
       z-index: 1; 
   }
   .about-grid{
@@ -349,7 +349,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   }
   .about-content{
     text-align: center; 
-    margin-top: 0; /* Ne pas utiliser de marge supérieure négative/positive */
+    margin-top: 0; 
     display: flex; 
     flex-direction: column;
     align-items: center;
@@ -362,27 +362,27 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   .about-grid{grid-template-columns:1fr}
   .skills-grid{grid-template-columns:1fr}
   
-  /* Correction Chatbot Mobile - Ancrage fort */
+  /* Correction Chatbot Mobile - Ancrage fort et dimensions */
   .chatbot-container{
-    right: 1rem; /* Ancrage à 1rem du bord droit */
+    right: 1rem; 
     bottom: 1rem;
-    width: auto; /* La largeur sera définie par la fenêtre */
-    max-width: calc(100% - 2rem); /* Contrainte maximale pour éviter le débordement */
+    width: auto; 
+    max-width: calc(100% - 2rem); 
     margin: 0; 
     position: fixed;
     z-index: 9998;
   }
   .chatbot-window{
-    position: fixed; /* Fixer la fenêtre en bas */
+    position: fixed; 
     width: calc(100% - 2rem);
-    max-width: 360px; /* Conserver la largeur maximale desktop si l'écran est grand */
+    max-width: 360px; 
     right: 1rem;
-    left: auto; /* Ancrer à droite */
+    left: auto; 
     bottom: 80px;
     height: 70vh;
     border-radius: 16px 16px 0 0;
   }
-  /* Le bouton doit être positionné par rapport au viewport */
+  /* Correction du bouton flottant pour qu'il ne cause pas de débordement */
   .chatbot-button{
     right: 1rem;
     left: auto;
@@ -422,13 +422,14 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
     padding: 0.75rem 1.5rem;
   }
   
-  /* Correction ultime pour les petits écrans: le chatbot prend toute la largeur */
+  /* Correction Chatbot Full Width sur très petit écran */
   .chatbot-container{
     right: 0; 
     left: 0;
     max-width: 100%;
     bottom: 0;
     width: 100%;
+    margin: 0;
   }
   .chatbot-window {
     width: 100%;
