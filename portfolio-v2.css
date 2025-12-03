@@ -339,7 +339,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   .about-photo{
       width:200px;
       height:200px;
-      margin: 0 auto 1.5rem; /* Marge en bas de la photo pour espacer du titre */
+      margin: 0 auto 0; /* Centrage */
       z-index: 1; 
   }
   .about-grid{
@@ -349,7 +349,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   }
   .about-content{
     text-align: center; 
-    margin-top: 0; 
+    margin-top: 2.5rem; /* Marge supérieure forte pour la séparation */
     display: flex; 
     flex-direction: column;
     align-items: center;
