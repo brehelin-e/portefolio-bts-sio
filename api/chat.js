@@ -5,12 +5,19 @@ const { GoogleGenAI } = require('@google/genai');
 // GEMINI_API_KEY définie dans les variables d'environnement de Vercel.
 const ai = new GoogleGenAI({}); 
 
-// Rôle du chatbot basé sur les informations de votre portfolio (index.html, portfolio-v2.css)
+// NOUVELLES INSTRUCTIONS SYSTÈME POUR LA CONCISION ET LE FORMATAGE
 const systemInstruction = `
   Tu es l'assistant virtuel IA d'Ewen Bréhélin.
   Ton objectif est de répondre aux questions des visiteurs concernant son profil professionnel.
-  Ewen est un étudiant en BTS SIO option SISR, spécialisé en administration systèmes et réseaux, avec une forte compétence en développement web.
-  Tu dois impérativement t'appuyer sur les informations factuelles suivantes:
+  
+  Règles de style strictes (IMPERATIF) :
+  1. Les réponses doivent être courtes, concises, et aller droit au but. Pas de texte trop long.
+  2. Chaque idée ou information doit être dans une phrase simple, séparée clairement par un saut de ligne ou une ponctuation forte.
+  3. Tu ne dois utiliser AUCUN caractère de mise en forme spécial ou décoratif (astérisques, tirets, emojis, gras).
+  4. Le ton doit rester professionnel et simple.
+  5. Base-toi uniquement sur les informations factuelles fournies ci-dessous.
+
+  Informations factuelles sur Ewen Bréhélin :
   - Domaine d'expertise : Administration systèmes et réseaux (SISR), développement web, cybersécurité.
   - Compétences clés : Windows Server, Linux (Debian/Ubuntu), Réseaux (VLAN, DHCP, DNS), Développement (HTML, CSS, JS, PHP, MySQL, C#, PowerShell, Python).
   - Statut : Disponible pour un stage.
@@ -20,9 +27,7 @@ const systemInstruction = `
     2. Optimisation SEO blog immobilier (Correction technique, score Ahrefs passé de 51/100 à 100/100, Pelik356).
     3. Déploiement de 200 ordinateurs (Masters Windows, PXE Boot, CD29).
     4. Réparations Smartphones Avancées (Samsung S23 Ultra, Xiaomi, encollage, SAVE Quimper).
-  - Ton ton doit être professionnel, concis et serviable.
   - Ne réponds jamais aux questions qui ne sont pas liées à Ewen Bréhélin, à la technologie, à l'infrastructure, au développement ou à son portfolio.
-  - Ne divulgue jamais d'informations personnelles (numéro de téléphone, adresse e-mail) à moins que l'utilisateur le demande explicitement via une question comme "Comment contacter Ewen ?".
 `;
 
 // Historique de la conversation (stocké côté serveur pour la durée de l'appel)
@@ -56,13 +61,9 @@ module.exports = async (req, res) => {
     // Envoi du message et attente de la réponse
     const response = await chat.sendMessage({ message: question });
 
-    // Ajout de la réponse du bot à l'historique (pour le contexte du prochain appel, si vous décidez d'implémenter l'historique)
-    // Pour l'instant, nous renvoyons simplement la réponse.
-    
+    // Envoi de la réponse
     res.status(200).json({
       answer: response.text,
-      // Vous pouvez ajouter l'historique mis à jour ici si vous voulez le renvoyer
-      // updatedHistory: [...history, { role: "model", parts: [{ text: response.text }] }]
     });
 
   } catch (error) {
