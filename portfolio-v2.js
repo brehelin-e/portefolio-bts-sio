@@ -338,7 +338,7 @@ function initScrollIndicator() {
 }
 
 // ===============================================
-// 7. ANIMATIONS BARRES DE COMPÉTENCES
+// 7. ANIMATIONS BARRES DE COMPÉTENCES (Non utilisé en V2)
 // ===============================================
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {

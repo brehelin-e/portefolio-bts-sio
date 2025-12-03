@@ -6,18 +6,14 @@
   <title>Ewen Bréhélin — Développeur & Administrateur Système | Portfolio</title>
   <meta name="description" content="Portfolio d'Ewen Bréhélin, développeur et administrateur système passionné. Expertise en infrastructure, réseaux, développement web et cybersécurité.">
   
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💼</text></svg>">
   
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   
-  <!-- AOS Library -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
   
-  <!-- Microsoft Clarity -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -26,23 +22,25 @@
     })(window, document, "clarity", "script", "tucxhqiplw");
   </script>
   
-  <!-- Styles -->
   <link rel="stylesheet" href="portfolio-v2.css">
 </head>
 <body>
 
-  <!-- BOUTON BURGER MOBILE -->
   <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
     <span></span>
     <span></span>
     <span></span>
   </button>
 
-  <!-- OVERLAY MOBILE -->
   <div class="mobile-overlay" id="mobile-overlay"></div>
 
-  <!-- DRAWER MOBILE -->
   <aside class="mobile-drawer" id="mobile-drawer">
+    <div class="sidebar-brand" style="padding:1rem; text-align:center;">
+        <div class="avatar-wrapper" style="width:64px;height:64px; margin: 0 auto;">
+          <img src="./image/avatar.jpeg" alt="Ewen Bréhélin" class="avatar">
+        </div>
+        <p style="font-weight:600; color:var(--text-dark); margin-top:0.5rem;">Ewen Bréhélin</p>
+    </div>
     <nav class="sidebar-nav">
       <a href="#accueil" class="nav-item mobile-nav-link">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -81,10 +79,8 @@
     </nav>
   </aside>
 
-  <!-- MENU LATÉRAL FIXE GAUCHE -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-container">
-      <!-- Logo / Avatar -->
       <div class="sidebar-brand">
         <div class="avatar-wrapper">
           <img src="./image/avatar.jpeg" alt="Ewen Bréhélin" class="avatar">
@@ -92,7 +88,6 @@
         </div>
       </div>
 
-      <!-- Navigation principale -->
       <nav class="sidebar-nav">
         <a href="#accueil" class="nav-item active" data-tooltip="Accueil">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -134,7 +129,6 @@
         </a>
       </nav>
 
-      <!-- Réseaux sociaux -->
       <div class="sidebar-socials">
         <a href="https://github.com/brehelin-e" target="_blank" rel="noopener" class="social-link" data-tooltip="GitHub">
           <svg viewBox="0 0 24 24" fill="currentColor">
@@ -151,42 +145,33 @@
     </div>
   </aside>
 
-  <!-- CONTENU PRINCIPAL -->
   <main class="main-content">
     
-    <!-- SECTION HERO -->
     <section id="accueil" class="hero">
-      <!-- Canvas pour particules animées -->
       <canvas id="particles-canvas" class="particles-bg"></canvas>
       
-      <!-- Grille animée en fond -->
       <div class="grid-bg"></div>
 
       <div class="hero-container">
         <div class="hero-content">
-          <!-- Badge statut -->
           <div class="status-badge" data-aos="fade-up">
             <span class="status-dot"></span>
             <span>Disponible pour un stage</span>
           </div>
 
-          <!-- Titre principal avec effet glitch -->
           <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
             <span class="glitch" data-text="Ewen Bréhélin">Ewen Bréhélin</span>
           </h1>
 
-          <!-- Sous-titre avec animation typewriter -->
           <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
             <span class="typing-text">Développeur & Administrateur Système</span>
           </p>
 
-          <!-- Phrase d'accroche -->
           <p class="hero-description" data-aos="fade-up" data-aos-delay="300">
             Passionné par l'infrastructure, les réseaux et le développement web.<br>
             Je transforme des défis techniques en solutions innovantes.
           </p>
 
-          <!-- Call-to-Actions -->
           <div class="hero-cta" data-aos="fade-up" data-aos-delay="400">
             <a href="#cv-modal" class="btn btn-primary">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -211,7 +196,6 @@
             </a>
           </div>
 
-          <!-- Scroll indicator -->
           <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="500">
             <span>Scroll pour découvrir</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -223,7 +207,6 @@
     </section>
 
 
-    <!-- SECTION À PROPOS -->
     <section id="apropos" class="section about">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
@@ -232,7 +215,6 @@
         </div>
 
         <div class="about-grid">
-          <!-- Photo professionnelle -->
           <div class="about-photo" data-aos="fade-right">
             <div class="photo-wrapper">
               <img src="./image/avatar.jpeg" alt="Ewen Bréhélin" class="profile-photo">
@@ -240,7 +222,6 @@
             </div>
           </div>
 
-          <!-- Contenu -->
           <div class="about-content" data-aos="fade-left">
             <h3 class="about-title">Étudiant BTS SIO passionné par la tech</h3>
             
@@ -255,7 +236,6 @@
               SAVE, Pelik356, Terres de l'Ouest), j'ai acquis une expertise solide en :
             </p>
 
-            <!-- Compétences principales en tags -->
             <div class="skills-tags">
               <span class="skill-tag">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -310,7 +290,6 @@
               </span>
             </div>
 
-            <!-- Certification PIX -->
             <div class="pix-certification" data-aos="fade-up">
               <div class="pix-badge">
                 <svg class="pix-icon" viewBox="0 0 24 24" fill="none">
@@ -328,7 +307,6 @@
       </div>
     </section>
 
-    <!-- SECTION PROJETS -->
     <section id="projets" class="section projects">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
@@ -341,10 +319,9 @@
         </div>
 
         <div class="projects-grid">
-          <!-- Projet 1 : Centreon -->
           <article class="project-card" data-aos="fade-up">
             <div class="project-image">
-              <img src="./image/avatar.jpeg" alt="Serveur Centreon">
+              <img src="./image/projet-centreon.jpg" alt="Serveur Centreon">
               <div class="project-overlay">
                 <div class="project-tech">
                   <span class="tech-badge">Centreon</span>
@@ -376,10 +353,9 @@
             </div>
           </article>
 
-          <!-- Projet 2 : SEO -->
           <article class="project-card" data-aos="fade-up" data-aos-delay="100">
             <div class="project-image">
-              <img src="./image/avatar.jpeg" alt="Optimisation SEO">
+              <img src="./image/projet-seo.jpg" alt="Optimisation SEO">
               <div class="project-overlay">
                 <div class="project-tech">
                   <span class="tech-badge">SEO</span>
@@ -411,10 +387,9 @@
             </div>
           </article>
 
-          <!-- Projet 3 : Déploiement PC -->
           <article class="project-card" data-aos="fade-up" data-aos-delay="200">
             <div class="project-image">
-              <img src="./image/avatar.jpeg" alt="Déploiement ordinateurs">
+              <img src="./image/projet-cd29.jpg" alt="Déploiement ordinateurs">
               <div class="project-overlay">
                 <div class="project-tech">
                   <span class="tech-badge">Windows 10</span>
@@ -446,10 +421,9 @@
             </div>
           </article>
 
-          <!-- Projet 4 : Réparations -->
           <article class="project-card" data-aos="fade-up" data-aos-delay="300">
             <div class="project-image">
-              <img src="./image/avatar.jpeg" alt="Réparations smartphones">
+              <img src="./image/projet-reparation.jpg" alt="Réparations smartphones">
               <div class="project-overlay">
                 <div class="project-tech">
                   <span class="tech-badge">Samsung</span>
@@ -485,7 +459,6 @@
     </section>
 
 
-    <!-- SECTION COMPÉTENCES -->
     <section id="competences" class="section skills-section">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
@@ -494,7 +467,6 @@
         </div>
 
         <div class="skills-grid">
-          <!-- Catégorie 1 : Systèmes -->
           <div class="skill-category" data-aos="fade-up">
             <div class="skill-category-header">
               <div class="skill-icon gradient-blue">
@@ -508,21 +480,14 @@
             </div>
             <div class="skill-list">
               <div class="skill-item">
-                <span class="skill-name">Windows Server</span>
-                <span class="skill-badge">Expert</span>
-              </div>
+                <span class="skill-name">Windows Server</span> </div>
               <div class="skill-item">
-                <span class="skill-name">Linux (Debian/Ubuntu)</span>
-                <span class="skill-badge">Avancé</span>
-              </div>
+                <span class="skill-name">Linux (Debian/Ubuntu)</span> </div>
               <div class="skill-item">
-                <span class="skill-name">Windows 10/11</span>
-                <span class="skill-badge">Expert</span>
-              </div>
+                <span class="skill-name">Windows 10/11</span> </div>
             </div>
           </div>
 
-          <!-- Catégorie 2 : Réseaux -->
           <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
             <div class="skill-category-header">
               <div class="skill-icon gradient-cyan">
@@ -536,21 +501,14 @@
             </div>
             <div class="skill-list">
               <div class="skill-item">
-                <span class="skill-name">VLAN & Switching</span>
-                <span class="skill-badge">Avancé</span>
-              </div>
+                <span class="skill-name">VLAN & Switching</span> </div>
               <div class="skill-item">
-                <span class="skill-name">DHCP / DNS</span>
-                <span class="skill-badge">Expert</span>
-              </div>
+                <span class="skill-name">DHCP / DNS</span> </div>
               <div class="skill-item">
-                <span class="skill-name">Diagnostic réseau</span>
-                <span class="skill-badge">Avancé</span>
-              </div>
+                <span class="skill-name">Diagnostic réseau</span> </div>
             </div>
           </div>
 
-          <!-- Catégorie 3 : Développement -->
           <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
             <div class="skill-category-header">
               <div class="skill-icon gradient-purple">
@@ -563,21 +521,14 @@
             </div>
             <div class="skill-list">
               <div class="skill-item">
-                <span class="skill-name">HTML / CSS / JS</span>
-                <span class="skill-badge">Avancé</span>
-              </div>
+                <span class="skill-name">HTML / CSS / JS</span> </div>
               <div class="skill-item">
-                <span class="skill-name">PHP / MySQL</span>
-                <span class="skill-badge">Intermédiaire</span>
-              </div>
+                <span class="skill-name">PHP / MySQL</span> </div>
               <div class="skill-item">
-                <span class="skill-name">C# / PowerShell</span>
-                <span class="skill-badge">Intermédiaire</span>
-              </div>
+                <span class="skill-name">C# / PowerShell</span> </div>
             </div>
           </div>
 
-          <!-- Catégorie 4 : Support -->
           <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
             <div class="skill-category-header">
               <div class="skill-icon gradient-pink">
@@ -592,24 +543,17 @@
             </div>
             <div class="skill-list">
               <div class="skill-item">
-                <span class="skill-name">Support utilisateur</span>
-                <span class="skill-badge">Expert</span>
-              </div>
+                <span class="skill-name">Support utilisateur</span> </div>
               <div class="skill-item">
-                <span class="skill-name">Documentation</span>
-                <span class="skill-badge">Expert</span>
-              </div>
+                <span class="skill-name">Documentation</span> </div>
               <div class="skill-item">
-                <span class="skill-name">Diagnostic matériel</span>
-                <span class="skill-badge">Avancé</span>
-              </div>
+                <span class="skill-name">Diagnostic matériel</span> </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION CONTACT -->
     <section id="contact" class="section contact">
       <div class="container-small">
         <div class="section-header" data-aos="fade-up">
@@ -622,7 +566,6 @@
         </div>
 
         <div class="contact-container" data-aos="fade-up" data-aos-delay="100">
-          <!-- Formulaire -->
           <form class="contact-form" action="https://formsubmit.co/brehelin-e@saint-louis29.net" method="POST">
             <div class="form-row">
               <div class="form-group">
@@ -647,17 +590,11 @@
               </select>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" style="margin-bottom: 2rem;">
               <label for="message">Message</label>
               <textarea id="message" name="Message" rows="6" required placeholder="Votre message..."></textarea>
             </div>
 
-            <div class="form-group">
-              <label for="fichier">Joindre un fichier (optionnel)</label>
-              <input type="file" id="fichier" name="Fichier" accept=".pdf,.doc,.docx,.txt,.jpg,.png">
-            </div>
-
-            <!-- Champs cachés FormSubmit -->
             <input type="hidden" name="_subject" value="Nouveau message portfolio">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_captcha" value="false">
@@ -673,18 +610,16 @@
             </button>
           </form>
 
-          <!-- CTA final -->
           <div class="contact-cta" data-aos="fade-up" data-aos-delay="200">
-            <h3>Travaillons ensemble</h3>
-            <p>Passionné, rigoureux et toujours prêt à relever de nouveaux défis techniques.</p>
+            <h3>Restons en contact</h3>
+            <p>Je suis disponible pour vos questions, échanges ou demandes d’informations.</p>
             <div class="contact-links">
-              <a href="/cdn-cgi/l/email-protection#9bf9e9fef3fef7f2f5b6fedbe8faf2f5efb6f7f4eef2e8a9a2b5f5feef" class="contact-link">
+              <a href="mailto:brehelin-e@saint-louis29.net" class="contact-link">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                   <polyline points="22,6 12,13 2,6"></polyline>
                 </svg>
-                <span><span class="__cf_email__" data-cfemail="076575626f626b6e692a624774666e69732a6b68726e74353e29696273">[email&#160;protected]</span></span>
-              </a>
+                <span>brehelin-e@saint-louis29.net</span> </a>
               <a href="tel:0772720438" class="contact-link">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
@@ -705,7 +640,6 @@
       </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="footer">
       <div class="container">
         <div class="footer-content">
@@ -722,11 +656,6 @@
   </main>
 
 
-  <!-- ========================================
-       MODALES
-       ======================================== -->
-  
-  <!-- Modale CV -->
   <div id="cv-modal" class="modal">
     <div class="modal-backdrop"></div>
     <div class="modal-container large">
@@ -755,7 +684,6 @@
     </div>
   </div>
 
-  <!-- Modale Mentions légales -->
   <div id="mentions-modal" class="modal">
     <div class="modal-backdrop"></div>
     <div class="modal-container">
@@ -772,7 +700,7 @@
         <h4 style="margin-top: 0;">Éditeur du site</h4>
         <p><strong>Ewen Bréhélin</strong><br>
         Étudiant BTS SIO SISR<br>
-        Email : <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bbd9c9ded3ded7d2d596defbc8dad2d5cf96d7d4ced2c8898295d5decf">[email&#160;protected]</a></p>
+        Email : <a href="mailto:brehelin-e@saint-louis29.net">brehelin-e@saint-louis29.net</a></p>
         
         <h4>Hébergement</h4>
         <p>Ce site est hébergé par Vercel Inc.</p>
@@ -786,11 +714,11 @@
     </div>
   </div>
 
-  <!-- Modale Projet Centreon -->
   <div id="projet-centreon" class="modal">
     <div class="modal-backdrop"></div>
     <div class="modal-container large">
-      <div class="modal-header">
+      <div class="modal-header-project">
+        <img src="./image/projet-centreon.jpg" alt="Capture d'écran Centreon">
         <h3>Serveur de supervision Centreon</h3>
         <button class="modal-close" aria-label="Fermer">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -838,11 +766,11 @@
     </div>
   </div>
 
-  <!-- Modale Projet SEO -->
   <div id="projet-seo" class="modal">
     <div class="modal-backdrop"></div>
     <div class="modal-container large">
-      <div class="modal-header">
+      <div class="modal-header-project">
+        <img src="./image/projet-seo.jpg" alt="Optimisation SEO">
         <h3>Optimisation SEO - Blog Immobilier</h3>
         <button class="modal-close" aria-label="Fermer">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -896,11 +824,11 @@
     </div>
   </div>
 
-  <!-- Modale Projet CD29 -->
   <div id="projet-cd29" class="modal">
     <div class="modal-backdrop"></div>
     <div class="modal-container large">
-      <div class="modal-header">
+      <div class="modal-header-project">
+        <img src="./image/projet-cd29.jpg" alt="Déploiement ordinateurs">
         <h3>Déploiement 200 Ordinateurs - CD29</h3>
         <button class="modal-close" aria-label="Fermer">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -960,11 +888,11 @@
     </div>
   </div>
 
-  <!-- Modale Projet Réparations -->
   <div id="projet-reparation" class="modal">
     <div class="modal-backdrop"></div>
     <div class="modal-container large">
-      <div class="modal-header">
+      <div class="modal-header-project">
+        <img src="./image/projet-reparation.jpg" alt="Réparations smartphones">
         <h3>Réparations Smartphones Avancées</h3>
         <button class="modal-close" aria-label="Fermer">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1034,7 +962,6 @@
     </div>
   </div>
 
-  <!-- CHATBOT IA -->
   <div class="chatbot-container">
     <button class="chatbot-button" id="chatbot-toggle" aria-label="Ouvrir le chat">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1084,7 +1011,6 @@
     </div>
   </div>
 
-  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script src="portfolio-v2.js"></script>
 

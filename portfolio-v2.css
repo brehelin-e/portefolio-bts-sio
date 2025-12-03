@@ -7,13 +7,13 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
 :root {
-  /* Couleurs */
-  --primary:#6366f1;--secondary:#8b5cf6;--accent:#06b6d4;
-  --success:#10b981;--warning:#f59e0b;--danger:#ef4444;
+  /* Couleurs (Ref. 1) */
+  --primary:#6366f1;--secondary:#4F46E5;--accent:#0EA5E9;
+  --success:#0EA5E9;--warning:#4F46E5;--danger:#ef4444;
   
-  /* Gradients */
-  --gradient-primary:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
-  --gradient-secondary:linear-gradient(135deg,#f093fb 0%,#f5576c 100%);
+  /* Gradients (Ref. 1) */
+  --gradient-primary:linear-gradient(135deg,#6366F1 0%,#4F46E5 100%);
+  --gradient-secondary:linear-gradient(135deg,#0EA5E9 0%,#06b6d4 100%);
   --gradient-cyan:linear-gradient(135deg,#4facfe 0%,#00f2fe 100%);
   --gradient-blue:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
   --gradient-purple:linear-gradient(135deg,#a8edea 0%,#fed6e3 100%);
@@ -63,8 +63,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 .mobile-menu-btn.active span:nth-child(2){opacity:0}
 .mobile-menu-btn.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
 
-/* Drawer mobile */
-.mobile-drawer{display:none;position:fixed;top:0;left:-100%;width:280px;height:100vh;background:rgba(255,255,255,0.98);backdrop-filter:blur(20px);z-index:10000;padding:5rem 2rem 2rem;transition:left 0.3s ease;box-shadow:var(--shadow-xl)}
+/* Drawer mobile (Ref. 6A) */
+.mobile-drawer{display:none;position:fixed;top:0;left:-100%;width:280px;height:100vh;background:rgba(255,255,255,0.98);backdrop-filter:blur(20px);z-index:10000;padding:0rem;transition:left 0.3s ease;box-shadow:var(--shadow-xl)}
 .mobile-drawer.open{left:0}
 .mobile-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:9999;opacity:0;pointer-events:none;transition:var(--transition)}
 .mobile-overlay.show{opacity:1;pointer-events:auto}
@@ -85,6 +85,16 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 .nav-item.active{background:var(--gradient-primary);color:var(--text-white)}
 .nav-icon{width:24px;height:24px}
 .nav-label{display:none}
+
+/* Styles pour le menu mobile (Ref. 6A) */
+.mobile-drawer .sidebar-nav{padding:1rem 0}
+.mobile-drawer .nav-item{justify-content:flex-start;width:100%;padding:1rem;color:var(--text-dark)}
+.mobile-drawer .nav-item:hover{transform:none}
+.mobile-drawer .nav-label{display:block;font-size:1rem;font-weight:600}
+.mobile-drawer .nav-icon{flex-shrink:0;margin-right:1rem;color:var(--primary)}
+.mobile-drawer .nav-item.active{background:rgba(99,102,241,0.1);color:var(--text-dark)}
+.mobile-drawer .nav-item.active .nav-icon{color:var(--primary)}
+
 
 .sidebar-socials{display:flex;flex-direction:column;gap:var(--spacing-sm);margin-top:auto}
 .social-link{display:flex;align-items:center;justify-content:center;width:40px;height:40px;color:var(--text-gray);text-decoration:none;border-radius:var(--radius);transition:var(--transition)}
@@ -200,8 +210,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 
 .project-actions{display:flex;gap:var(--spacing-sm)}
 .btn-project{display:inline-flex;align-items:center;gap:var(--spacing-sm);padding:0.625rem 1.25rem;border-radius:var(--radius);font-size:0.9375rem;font-weight:500;text-decoration:none;transition:var(--transition)}
-.btn-primary-project{background:var(--gradient-primary);color:var(--text-white)}
-.btn-primary-project:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.btn-primary-project{background:linear-gradient(135deg,#6366F1,#4F46E5);color:var(--text-white)} /* Ref. 1 */
+.btn-primary-project:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(139,92,246,0.3)}
 
 /* ===== COMPÉTENCES ===== */
 .skills-section{background:var(--bg-light)}
@@ -218,14 +228,13 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 .skill-icon.gradient-purple{background:var(--gradient-purple)}
 .skill-icon.gradient-pink{background:var(--gradient-pink)}
 
-.skill-category-header h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:600;color:var(--text-dark)}
-
 .skill-list{display:flex;flex-direction:column;gap:var(--spacing-lg)}
 .skill-item{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;background:var(--bg-white);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);transition:var(--transition);border:1px solid rgba(0,0,0,0.05)}
 .skill-item:hover{box-shadow:var(--shadow-md);transform:translateX(4px);border-color:var(--primary)}
 .skill-name{font-size:1rem;font-weight:500;color:var(--text-dark);display:flex;align-items:center;gap:0.75rem}
-.skill-name::before{content:"";width:8px;height:8px;background:var(--primary);border-radius:50%}
-.skill-badge{padding:0.375rem 0.875rem;background:rgba(99,102,241,0.1);color:var(--primary);border-radius:var(--radius-full);font-size:0.8125rem;font-weight:600}
+/* Ref. 3: Suppression des points bleus de la V2 */
+.skill-name::before{content:"";width:8px;height:8px;background:var(--primary);border-radius:50%;opacity:0;} 
+/* Ref. 3: Le badge .skill-badge a été retiré du HTML */
 
 /* ===== CONTACT ===== */
 .contact{background:var(--bg-white)}
@@ -236,11 +245,9 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 .form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--spacing-lg);margin-bottom:var(--spacing-lg)}
 .form-group{display:flex;flex-direction:column;gap:var(--spacing-sm)}
 .form-group label{font-size:0.9375rem;font-weight:600;color:var(--text-dark);letter-spacing:0.3px}
-.form-group input,.form-group select,.form-group textarea,.form-group input[type="file"]{padding:1rem 1.25rem;border:2px solid rgba(99,102,241,0.15);border-radius:var(--radius-lg);font-size:1rem;font-family:inherit;background:var(--bg-white);color:var(--text-dark);transition:var(--transition);box-shadow:var(--shadow-sm)}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus,.form-group input[type="file"]:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 4px rgba(99,102,241,0.1),var(--shadow-md);transform:translateY(-1px)}
-.form-group input[type="file"]{padding:0.875rem 1.25rem;cursor:pointer}
-.form-group input[type="file"]::file-selector-button{padding:0.5rem 1rem;background:var(--primary);color:white;border:none;border-radius:var(--radius);cursor:pointer;margin-right:0.75rem;transition:var(--transition)}
-.form-group input[type="file"]::file-selector-button:hover{background:var(--secondary)}
+/* Ref. 4: Retrait des styles de l'input type="file" car il a été retiré du HTML */
+.form-group input,.form-group select,.form-group textarea{padding:1rem 1.25rem;border:2px solid rgba(99,102,241,0.15);border-radius:var(--radius-lg);font-size:1rem;font-family:inherit;background:var(--bg-white);color:var(--text-dark);transition:var(--transition);box-shadow:var(--shadow-sm)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 4px rgba(99,102,241,0.1),var(--shadow-md);transform:translateY(-1px)}
 .form-group textarea{resize:vertical;min-height:150px;line-height:1.6}
 .form-group select{cursor:pointer}
 
@@ -255,9 +262,9 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 
 /* ===== BOUTONS ===== */
 .btn{display:inline-flex;align-items:center;gap:var(--spacing-sm);padding:0.875rem 1.75rem;border:none;border-radius:var(--radius-lg);font-size:1rem;font-weight:600;text-decoration:none;cursor:pointer;transition:var(--transition);font-family:inherit;box-shadow:var(--shadow-md)}
-.btn-primary{background:linear-gradient(135deg,#10b981,#059669);color:var(--text-white)}
+.btn-primary{background:var(--gradient-primary);color:var(--text-white)} /* Ref. 1 */
 .btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-xl)}
-.btn-secondary{background:linear-gradient(135deg,#f59e0b,#d97706);color:var(--text-white);border:none}
+.btn-secondary{background:var(--gradient-secondary);color:var(--text-white);border:none} /* Ref. 1 */
 .btn-secondary:hover{transform:translateY(-2px);box-shadow:var(--shadow-xl)}
 .btn-outline{background:transparent;color:rgba(255,255,255,0.95);border:2px solid rgba(255,255,255,0.5);box-shadow:none}
 .btn-outline:hover{background:rgba(255,255,255,0.1);border-color:var(--text-white);box-shadow:var(--shadow-md)}
@@ -282,7 +289,15 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 
 @keyframes modalSlideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 
+/* Ref. 2: Nouveau style pour l'en-tête de modale de projet */
 .modal-header{display:flex;align-items:center;justify-content:space-between;padding:var(--spacing-xl);border-bottom:1px solid rgba(0,0,0,0.05)}
+.modal-header-project{position:relative;height:250px;overflow:hidden;border-radius:var(--radius-xl) var(--radius-xl) 0 0;padding:var(--spacing-xl);display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end}
+.modal-header-project img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.modal-header-project::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:2}
+.modal-header-project h3{position:relative;z-index:3;color:white;font-size:1.75rem;font-weight:700;margin-bottom:1rem}
+.modal-header-project .modal-close{position:absolute;z-index:4;top:1rem;right:1rem;background:rgba(255,255,255,0.2);color:white;border-color:rgba(255,255,255,0.4)}
+.modal-header-project .modal-close:hover{background:rgba(255,255,255,0.4)}
+
 .modal-header h3{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:600;color:var(--text-dark)}
 .modal-close{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:none;background:rgba(0,0,0,0.05);border-radius:var(--radius);color:var(--text-gray);cursor:pointer;transition:var(--transition)}
 .modal-close:hover{background:rgba(0,0,0,0.1);color:var(--text-dark)}
@@ -315,22 +330,16 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   .section{padding:var(--spacing-3xl) var(--spacing-lg)}
   .hero{padding:var(--spacing-xl)}
   .hero-title{font-size:2rem}
-  .hero-cta{flex-direction:column;align-items:stretch}
-  .projects-grid{grid-template-columns:1fr}
-  .form-row{grid-template-columns:1fr}
+  .hero-cta{flex-direction:column;align-items:stretch} /* Ref. 6B: Boutons Hero full width */
+  .projects-grid{grid-template-columns:1fr; gap: 1.5rem;} /* Ref. 6C: Projets 1 colonne */
+  .about-photo{width:200px;height:200px;margin:0 auto} /* Ref. 6D: Image "À Propos" plus petite */
+  .about-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr} /* Ref. 6D: Compétences 1 colonne */
+  
+  /* Chatbot Mobile (optimisation) */
   .chatbot-window{width:100%;max-width:100%;right:0;left:0;bottom:0;height:70vh;border-radius:16px 16px 0 0}
   .chatbot-button{bottom:10px;right:10px;width:55px;height:55px}
 }
-
-/* ===== ANIMATIONS AOS ===== */
-[data-aos]{opacity:0;transition-property:opacity,transform}
-[data-aos].aos-animate{opacity:1}
-[data-aos="fade-up"]{transform:translateY(30px)}
-[data-aos="fade-up"].aos-animate{transform:translateY(0)}
-[data-aos="fade-left"]{transform:translateX(-30px)}
-[data-aos="fade-left"].aos-animate{transform:translateX(0)}
-[data-aos="fade-right"]{transform:translateX(30px)}
-[data-aos="fade-right"].aos-animate{transform:translateX(0)}
 
 /* ===== UTILITAIRES ===== */
 .text-center{text-align:center}
@@ -370,3 +379,41 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 .chatbot-suggestions{display:flex;flex-wrap:wrap;gap:0.5rem;padding:0 1rem 1rem;background:#f9fafb}
 .suggestion-chip{padding:0.5rem 0.75rem;background:white;border:1px solid #e5e7eb;border-radius:20px;font-size:0.8125rem;cursor:pointer;transition:var(--transition)}
 .suggestion-chip:hover{background:rgba(99,102,241,0.1);border-color:var(--primary)}
+/* AJOUT/MODIFICATION dans portfolio-v2.css */
+
+@media (max-width: 480px) { /* Cibler les très petits téléphones */
+  .hero-title {
+    font-size: 1.8rem; /* Réduction de la taille du titre */
+    margin-bottom: var(--spacing-md);
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem; /* Réduction de la taille du sous-titre */
+  }
+
+  .hero-description {
+    font-size: 1rem; /* Réduction de la taille de la description */
+    max-width: 90%;
+  }
+
+  /* Ajuster le badge pour qu'il ne soit pas trop large */
+  .status-badge {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  /* S'assurer que les boutons ont un padding suffisant */
+  .hero-cta .btn {
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+@media (max-width: 768px){
+  /* ... (autres styles existants pour 768px) ... */
+  .hero-cta{
+    gap: var(--spacing-lg); /* Augmente l'espace entre les boutons */
+  }
+  .hero-cta .btn{
+    width:100%; /* Garantir la pleine largeur */
+  }
+}
