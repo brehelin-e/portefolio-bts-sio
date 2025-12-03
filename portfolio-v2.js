@@ -538,3 +538,133 @@ function initChatbot() {
 
 // Initialiser le chatbot au chargement du DOM
 document.addEventListener('DOMContentLoaded', initChatbot);
+/* =================================================================
+   PORTFOLIO V2 - JAVASCRIPT (Connecté à l'API Gemini via /api/chat)
+   Animations, particules, navigation, modales
+   ================================================================= */
+
+// ===============================================
+// 1. INITIALISATION AOS (Animations on Scroll)
+// ===============================================
+// ... (Le code reste inchangé) ...
+
+// ===============================================
+// 2. MENU BURGER MOBILE
+// ===============================================
+function initMobileMenu() {
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const drawer = document.getElementById('mobile-drawer');
+  const overlay = document.getElementById('mobile-overlay');
+  // Sélecteur corrigé pour s'assurer que les liens dans le tiroir mobile ferment le menu
+  const navLinks = document.querySelectorAll('.mobile-drawer .nav-item');
+
+  if (!menuBtn || !drawer || !overlay) return;
+
+  // Toggle menu
+  menuBtn.addEventListener('click', () => {
+    menuBtn.classList.toggle('active');
+    drawer.classList.toggle('open');
+    overlay.classList.toggle('show');
+    // Gérer le focus pour l'accessibilité
+    if (drawer.classList.contains('open')) {
+      drawer.focus();
+    }
+  });
+
+  // Close on overlay click
+  overlay.addEventListener('click', () => {
+    menuBtn.classList.remove('active');
+    drawer.classList.remove('open');
+    overlay.classList.remove('show');
+  });
+
+  // Close on nav link click
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      menuBtn.classList.remove('active');
+      drawer.classList.remove('open');
+      overlay.classList.remove('show');
+    });
+  });
+}
+
+// ===============================================
+// 3. SYSTÈME DE PARTICULES ANIMÉES (CANVAS)
+// ===============================================
+// ... (Le code reste inchangé) ...
+
+// ===============================================
+// 3. NAVIGATION ACTIVE & SMOOTH SCROLL
+// ===============================================
+function initNavigation() {
+  const navItems = document.querySelectorAll('.nav-item');
+  const sections = document.querySelectorAll('.section, .hero');
+
+  // Smooth scroll
+  navItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      const href = item.getAttribute('href');
+      
+      if (href && href.startsWith('#') && !href.includes('-modal')) {
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const target = document.getElementById(targetId);
+        
+        if (target) {
+          // Correction pour mieux gérer le smooth scroll sur mobile sans sidebar
+          const headerOffset = 80; // Ajout d'un petit décalage pour ne pas que le contenu soit caché
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+          });
+        }
+      }
+    });
+  });
+
+  // Highlighter section active
+  function highlightActiveSection() {
+    let currentSection = '';
+    const scrollY = window.scrollY;
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      
+      // Utilisation d'un offset plus grand pour le highlight
+      if (scrollY >= sectionTop - 300) { 
+        currentSection = section.getAttribute('id');
+      }
+    });
+
+    navItems.forEach(item => {
+      // Pour la navigation desktop/sidebar (ceux qui n'ont pas la classe mobile-nav-link dans le DOM principal)
+      if (!item.classList.contains('mobile-nav-link')) { 
+          item.classList.remove('active');
+          const href = item.getAttribute('href');
+          if (href === `#${currentSection}`) {
+            item.classList.add('active');
+          }
+      }
+      // Pour la navigation mobile (si elle est affichée)
+      const mobileNavItem = document.querySelector(`.mobile-drawer a[href="#${currentSection}"]`);
+      if (mobileNavItem) {
+          // Retire active de tous les liens mobiles, puis l'ajoute au bon
+          document.querySelectorAll('.mobile-drawer .nav-item').forEach(li => li.classList.remove('active'));
+          mobileNavItem.classList.add('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', highlightActiveSection);
+  highlightActiveSection(); // Init
+}
+
+// ===============================================
+// 4. GESTION DES MODALES
+// ... (Le reste du code JavaScript est correct et n'a pas besoin de modifications liées au mobile)
+// ===============================================
+
+// ... (Le reste du code JavaScript reste inchangé) ...

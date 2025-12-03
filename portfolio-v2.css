@@ -494,3 +494,105 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 .chatbot-suggestions{display:flex;flex-wrap:wrap;gap:0.5rem;padding:0 1rem 1rem;background:#f9fafb}
 .suggestion-chip{padding:0.5rem 0.75rem;background:white;border:1px solid #e5e7eb;border-radius:20px;font-size:0.8125rem;cursor:pointer;transition:var(--transition)}
 .suggestion-chip:hover{background:rgba(99,102,241,0.1);border-color:var(--primary)}
+
+/* ... (Code CSS précédent) ... */
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:1024px){
+  .about-grid{grid-template-columns:1fr;gap:var(--spacing-2xl)}
+  .skills-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+}
+
+@media (max-width:768px){
+  :root{--sidebar-width:0}
+  .sidebar{display:none;} 
+  .mobile-menu-btn{display:flex}
+  .mobile-drawer{display:block; left: -280px;} 
+  .mobile-drawer.open{left:0}
+  .mobile-overlay{display:block}
+  .main-content{margin-left:0}
+  .section{padding:var(--spacing-3xl) var(--spacing-lg)}
+  .hero{padding:var(--spacing-xl)}
+  .hero-title{font-size:2.5rem}
+  .hero-cta{flex-direction:column;align-items:stretch; gap: var(--spacing-lg);}
+  .projects-grid{grid-template-columns:1fr; gap: 1.5rem;}
+  
+  /* Correction "À propos" (Avatar) */
+  .about-photo{
+      width:280px; /* Taille cohérente avec le wrapper */
+      height:280px;
+      margin: 0 auto; 
+      z-index: 1; 
+  }
+  .photo-wrapper {
+      width: 100%; /* S'adapte à la taille du about-photo */
+      height: 100%;
+  }
+  .about-grid{
+      gap: 0; 
+      grid-gap: 0; 
+      padding-top: 1rem;
+  }
+  .about-content{
+    text-align: center; 
+    margin-top: 2.5rem; 
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-lg); 
+  }
+  .about-title {
+      margin-top: 0; 
+  }
+  .skills-tags {
+      justify-content: center; /* Centrer les tags de compétences */
+  }
+  .pix-certification {
+      width: 100%; /* Pour centrer le badge */
+      max-width: 400px;
+  }
+  
+  .about-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr}
+  
+  /* Correction Chatbot Mobile - Ancrage fort et dimensions */
+  .chatbot-container{
+    right: 1rem; 
+    bottom: 1rem;
+    width: auto; 
+    max-width: calc(100% - 2rem); 
+    margin: 0; 
+    position: fixed;
+    z-index: 9998;
+  }
+  .chatbot-window{
+    position: fixed; 
+    width: calc(100% - 2rem);
+    max-width: 360px; 
+    right: 1rem;
+    left: auto; 
+    bottom: 80px;
+    height: 70vh;
+    border-radius: 16px 16px 0 0;
+  }
+  /* Correction du bouton flottant pour qu'il ne cause pas de débordement */
+  .chatbot-button{
+    right: 1rem;
+    left: auto;
+    bottom: 1rem;
+    position: fixed; 
+    z-index: 9999;
+  }
+  .chatbot-messages {
+    padding-right: 0.5rem; 
+  }
+  .chatbot-input {
+      padding: 0.5rem; 
+  }
+  .chatbot-suggestions {
+      padding: 0.5rem 0.5rem 1rem; 
+  }
+  
+}
+
+/* ... (Fin du code CSS) ... */
