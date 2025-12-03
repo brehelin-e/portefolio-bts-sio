@@ -255,8 +255,24 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 .form-group select{cursor:pointer}
 
 /* Styles spécifiques pour le champ file réintégré */
-.form-group input[type="file"]{padding:0.875rem 1.25rem;cursor:pointer}
-.form-group input[type="file"]::file-selector-button{padding:0.5rem 1rem;background:var(--primary);color:white;border:none;border-radius:var(--radius);cursor:pointer;margin-right:0.75rem;transition:var(--transition)}
+.form-group input[type="file"]{
+  padding:0.875rem 0.5rem; /* Réduit le padding pour plus d'espace */
+  cursor:pointer;
+  /* Assure que l'input prend toute la largeur disponible */
+  width: 100%;
+}
+.form-group input[type="file"]::file-selector-button{
+  padding:0.5rem 1rem;
+  background:var(--primary);
+  color:white;
+  border:none;
+  border-radius:var(--radius);
+  cursor:pointer;
+  margin-right:0.75rem;
+  transition:var(--transition);
+  /* Force le bouton à ne pas être trop large sur mobile */
+  white-space: nowrap; 
+}
 .form-group input[type="file"]::file-selector-button:hover{background:var(--secondary)}
 
 
@@ -379,6 +395,26 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   
   .about-grid{grid-template-columns:1fr}
   .skills-grid{grid-template-columns:1fr}
+  
+  /* Correction Contact Mobile */
+  .contact-form{
+    padding: 1.5rem; 
+  }
+  .form-row{
+    grid-template-columns: 1fr; 
+    gap: var(--spacing-md);
+  }
+  .contact-container{
+    gap: var(--spacing-xl); 
+    /* Ajout de padding en bas pour que le contenu ne soit pas caché par le bouton de chatbot */
+    padding-bottom: 70px; 
+  }
+  .contact-cta{
+    padding: var(--spacing-xl) var(--spacing-md); 
+  }
+  .contact-links {
+    max-width: 100%; 
+  }
   
   /* Correction Chatbot Mobile - Ancrage fort et dimensions */
   .chatbot-container{
